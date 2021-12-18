@@ -26,129 +26,172 @@ a{
 /* 스타일 */
 /* top-bar 시작 */
 header{
-  padding-bottom: 80px;
+  padding-bottom: 83px;
 }
 body{
   background-color: #f8f9fa;
 }
-.top-bar-wrap{
+#top-bar-wrap{
   width: 100%;
   height: 80px;
   background-color: #ffffff;
   position: fixed;
 }
-.top-bar-wrap > .first-top-bar{
+#first-top-bar{
   width: 100%;
   height: 40px;
   background-color: #E3FFDB;
 }
-.top-bar-wrap > .first-top-bar > .logo-box{
+#logo-box{
   width: 150px;
   height: 100%;
 }
-.top-bar-wrap > .first-top-bar > .logo-box > h3{
+#logo-box > h3{
   margin: auto;
   text-align: center;
   line-height: 40px;
 }
-.top-bar-wrap > .first-top-bar > .login-status{
+#login-status{
   width: 100px;
   height: 100%;
 }
-.top-bar-wrap > .first-top-bar > .login-status > h4{
+#login-status > h4{
   margin: auto;
   text-align: center;
   line-height: 40px;
 }
-.top-bar-wrap > .second-top-bar{
+#second-top-bar{
   width: 100%;
   height: 40px;
   border-bottom: solid 3px green;
-  box-shadow: 1px 3px 10px darkgreen; 
+  box-shadow: 1px 3px 8px darkgreen; 
 }
-.top-bar-wrap > .second-top-bar > .nav-bar{
+#nav-bar{
   margin: auto;
   width: 500px;
   height: 100%;
 }
-.top-bar-wrap > .second-top-bar > .nav-bar > .menu{
+#nav-bar > .menu{
   width: 33.3%;
   height: 100%;
   text-align: center;
   font-weight: bold;
   line-height: 40px;
 }
-.top-bar-wrap > .second-top-bar > .nav-bar:hover > .menu{
+#nav-bar:hover > .menu{
   color: #ddd;
 }
-.top-bar-wrap > .second-top-bar > .nav-bar > .menu:hover {
+#nav-bar > .menu:hover {
   color: black;
   background-color: #D1FFC9;
   box-shadow: 1px 3px 10px darkgreen;
 }
 /* top-bar 끝 */
 /* main 시작 */
-.main-wrap{
+#main-wrap{
   width: 900px;
   height: 1000px;
   margin: auto;
   padding: 10px;
-  background-color: #ddd;
 }
-.main-wrap > .welcome-msg{
+#welcome-msg{
   height: 80px;
   margin: auto;
   line-height: 80px;
   padding: 10px;
-  background-color: lightpink;
 }
-.main-wrap > .first-main{
+#first-main{
   height: 250px;
   margin: auto;
   margin-bottom: 30px;
 }
-.main-wrap > .first-main > .sentence{
+#first-sentence{
+  height: 30px;
+  line-height: 30px;
+  padding: 10px;
+}
+#first-content{
+  height: calc(100% - 30px);
+  line-height: 30px;
+  background-color: #FAF4C0;
+  border-radius: 20px;
+}
+#content-title{
+  width: 100%;
+  height: 30%;
+  line-height: 80px;
+}
+#content-title > h4{
+  padding-left: 30px;
+  color: darkgray;
+}
+#first-content > hr{
+  width: 95%;
+  margin: auto;
+}
+#content-body{
+  width: 100%;
+  height: 50%;
+}
+#content-body > h4{
+  padding-left: 30px;
+  color: darkgray;
+}
+#content-tag{
+  width: 100%;
+  height: 20%;
+}
+#content-tag > span{
+  padding-left: 30px;
+  color: darkgray;
+}
+#second-main{
+  height: 250px;
+  margin: auto;
+  margin-bottom: 30px;
+}
+#second-sentence{
+  height: 30px;
+  line-height: 30px;
+  padding: 10px;
+}
+#second-content{
+  height: calc(100% - 30px);
+  line-height: 30px;
+}
+#second-content > span{
+  padding-left: 10px;
+}
+#recent-tag-box{
+  margin-top: 20px;
+  height: 100px;
+  background-color: #FAF4C0;
+  padding-left: 10px;
+  border-radius: 20px;
+} 
+#recent-tag-box > span{
+  padding-left: 10px;
+  line-height: 40px;
+  color: darkgray;
+}
+#recent-tag-list{
+  padding-left: 10px;
+  color: darkgray;
+}
+#third-main{
+  height: 250px;
+  margin: auto;
+  margin-bottom: 30px;
+}
+#third-sentence{
   height: 30px;
   line-height: 30px;
   padding: 10px;
   background-color: darkolivegreen;
 }
-.main-wrap > .first-main > .content{
+#third-content{
   height: calc(100% - 30px);
   line-height: 30px;
   background-color: darkorange;
 }
-.main-wrap > .second-main{
-  height: 250px;
-  margin: auto;
-  margin-bottom: 30px;
-}
-.main-wrap > .second-main > .sentence{
-  height: 30px;
-  line-height: 30px;
-  padding: 10px;
-  background-color: darkolivegreen;
-}
-.main-wrap > .second-main > .content{
-  height: calc(100% - 30px);
-  line-height: 30px;
-  background-color: darkorange;
-}
-.main-wrap > .third-main{
-  height: 250px;
-  margin: auto;
-  margin-bottom: 30px;
-}
-.main-wrap > .third-main > .sentence{
-  height: 30px;
-  line-height: 30px;
-  padding: 10px;
-  background-color: darkolivegreen;
-}
-.main-wrap > .third-main > .content{
-  height: calc(100% - 30px);
-  line-height: 30px;
-  background-color: darkorange;
-}
-
 /* main 끝 */

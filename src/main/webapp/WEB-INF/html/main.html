@@ -8,13 +8,13 @@
 <link rel="stylesheet" type="text/css" href="css/main.css">
 
 <header>
-  <section class="top-bar-wrap">
-  <div class="first-top-bar row">
-    <div class="logo-box cell"><h3><a href="#">포켓 카드 노트</a></h3></div>
-    <div class="login-status cell-r"><h4><a href="#">로그인</a></h4></div>
+  <section id="top-bar-wrap">
+  <div id="first-top-bar" class="row">
+    <div id="logo-box" class="cell"><h3><a href="#">포켓 카드 노트</a></h3></div>
+    <div id="login-status" class="cell-r"><h4><a href="#">로그인</a></h4></div>
   </div>
-  <div class="second-top-bar">
-    <ul class="nav-bar row">
+  <div id="second-top-bar">
+    <ul id="nav-bar" class=" row">
         <li class="menu cell"><a href="#">카드 생성</a></li>
         <li class="menu cell"><a href="#">카드 목록</a></li>
         <li class="menu cell"><a href="#">마이페이지</a></li>
@@ -24,32 +24,45 @@
 </header>
 
 <body>
-  <section class="main-wrap">
-  <div class="welcome-msg">
+  <section id="main-wrap">
+  <div id="welcome-msg">
     <span>안녕하세요, OOO님! 오늘도 포켓 카드 노트로 열공하세요!</span>
   </div>
-  <div class="first-main">
-    <div class="sentence">
+  <div id="first-main">
+    <div id="first-sentence">
       <h4>학습할 내용을 문답식으로 카드에 정리해보세요!</h4>
     </div>
-    <div class="content">
-      
+    <div id="first-content">
+      <div id="content-title">
+        <h4>제목을 입력할 수 있어요.</h4>
+      </div>
+      <hr>
+      <div id="content-body">
+        <h4>내용을 입력할 수 있어요.</h4>
+      </div>
+      <div id="content-tag">
+        <span>#자바 #스프링 #태그를 추가할 수 있어요</span>
+      </div>
     </div>
-    
   </div>
-  <div class="second-main">
-    <div class="sentence">
+    
+  <div id="second-main">
+    <div id="second-sentence">
       <h4>해시태그를 추가해 카드를 다양하게 그룹화하세요!</h4>
     </div>
-    <div class="content">
-      
+    <div id="second-content">
+      <span>학습 주제와 학습 목적에 따라 원하는 카드만 검색할 수 있습니다.</span>
+      <div id="recent-tag-box">
+        <span>최근 생성한 해시태그</span>
+        <div id="recent-tag-list">#해시태그 값 불러오기</div>
+      </div>
     </div>
   </div>
-  <div class="third-main">
-    <div class="sentence">
+  <div id="third-main">
+    <div id="third-sentence">
       <h4>카드의 문제를 풀어본 뒤, 학습 필요/학습 완료 상태를 설정해보세요!</h4>
     </div>
-    <div class="content">
+    <div id="third-content">
       
     </div>
   </div>
