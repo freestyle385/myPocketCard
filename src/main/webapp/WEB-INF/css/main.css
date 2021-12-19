@@ -1,92 +1,4 @@
-/* 노멀라이즈 */
-*{
-  padding: 0;
-  margin: 0;
-}
-ul,li{
-  list-style: none;
-}
-a{
-  color: inherit;
-  text-decoration: none;
-}
-
-/* 라이브러리 */
-.row::after{
-  display: block;
-  content: "";
-  clear:  both;
-}
-.cell{
-  float: left;
-}
-.cell-r{
-  float: right;
-}
 /* 스타일 */
-/* top-bar 시작 */
-header{
-  padding-bottom: 83px;
-}
-body{
-  background-color: #f8f9fa;
-}
-#top-bar-wrap{
-  width: 100%;
-  height: 80px;
-  background-color: #ffffff;
-  position: fixed;
-}
-#first-top-bar{
-  width: 100%;
-  height: 40px;
-  background-color: #E3FFDB;
-}
-#logo-box{
-  width: 150px;
-  height: 100%;
-}
-#logo-box > h3{
-  margin: auto;
-  text-align: center;
-  line-height: 40px;
-}
-#login-status{
-  width: 100px;
-  height: 100%;
-}
-#login-status > h4{
-  margin: auto;
-  text-align: center;
-  line-height: 40px;
-}
-#second-top-bar{
-  width: 100%;
-  height: 40px;
-  border-bottom: solid 3px green;
-  box-shadow: 1px 3px 8px darkgreen; 
-}
-#nav-bar{
-  margin: auto;
-  width: 500px;
-  height: 100%;
-}
-#nav-bar > .menu{
-  width: 33.3%;
-  height: 100%;
-  text-align: center;
-  font-weight: bold;
-  line-height: 40px;
-}
-#nav-bar:hover > .menu{
-  color: #ddd;
-}
-#nav-bar > .menu:hover {
-  color: black;
-  background-color: #D1FFC9;
-  box-shadow: 1px 3px 10px darkgreen;
-}
-/* top-bar 끝 */
 /* main 시작 */
 #main-wrap{
   width: 900px;
@@ -146,9 +58,8 @@ body{
   color: darkgray;
 }
 #second-main{
-  height: 250px;
   margin: auto;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 #second-sentence{
   height: 30px;
@@ -156,7 +67,6 @@ body{
   padding: 10px;
 }
 #second-content{
-  height: calc(100% - 30px);
   line-height: 30px;
 }
 #second-content > span{
@@ -179,19 +89,33 @@ body{
   color: darkgray;
 }
 #third-main{
-  height: 250px;
   margin: auto;
-  margin-bottom: 30px;
 }
 #third-sentence{
   height: 30px;
   line-height: 30px;
   padding: 10px;
-  background-color: darkolivegreen;
 }
 #third-content{
-  height: calc(100% - 30px);
   line-height: 30px;
-  background-color: darkorange;
+}
+#third-content > span{
+  padding-left: 10px;
+}
+#learning-status-box{
+  margin-top: 20px;
+  height: 100px;
+  background-color: #FAF4C0;
+  padding-left: 10px;
+  border-radius: 20px;
+} 
+#learning-status-box > span{
+  padding-left: 10px;
+  line-height: 40px;
+  color: darkgray;
+}
+#learning-status-count{
+  padding-left: 10px;
+  color: darkgray;
 }
 /* main 끝 */
