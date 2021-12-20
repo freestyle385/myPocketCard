@@ -15,12 +15,15 @@
 #first-main{
   height: 250px;
   margin: auto;
-  margin-bottom: 30px;
+  margin-bottom: 80px;
 }
 #first-sentence{
   height: 30px;
   line-height: 30px;
   padding: 10px;
+}
+#first-sentence > h3{
+  color: #006E00;
 }
 #first-content{
   height: calc(100% - 30px);
@@ -59,12 +62,15 @@
 }
 #second-main{
   margin: auto;
-  margin-bottom: 10px;
+  margin-bottom: 60px;
 }
 #second-sentence{
   height: 30px;
   line-height: 30px;
   padding: 10px;
+}
+#second-sentence > h3{
+  color: #006E00;
 }
 #second-content{
   line-height: 30px;
@@ -95,6 +101,9 @@
   height: 30px;
   line-height: 30px;
   padding: 10px;
+}
+#third-sentence > h3{
+  color: #006E00;
 }
 #third-content{
   line-height: 30px;
