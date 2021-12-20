@@ -8,13 +8,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Card {
-	int id;
-	int writerId;
-	String title;
-	String body;
-	int learningStatus;
-	int answerStatus;
-	String tagStatus;
-	String regDate;
-	String updateDate;
+	private int id;
+	private int writerId;
+	private String title;
+	private String body;
+	private int learningStatus;
+	private int answerStatus;
+	private String tagStatus;
+	private String regDate;
+	private String updateDate;
 }
