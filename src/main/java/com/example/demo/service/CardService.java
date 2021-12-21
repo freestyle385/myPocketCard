@@ -16,9 +16,10 @@ public class CardService {
 		this.cardRepository = cardRepository;
 	}
 
-	public ResultData<ArrayList<Card>> getCardList(int memberId) {
+	public ResultData<ArrayList<Card>> getCardList(int memberId, String hashTag, int learningStatus, int answerHideStatus, String searchKeyword, int curPage) {
 		
-		ArrayList<Card> cardList = cardRepository.getCardList(memberId);
+		String[] hashTagArr = hashTag.split(" "); 
+		ArrayList<Card> cardList = cardRepository.getCardList(memberId, hashTagArr, learningStatus, answerHideStatus, searchKeyword, curPage);
 		ResultData<ArrayList<Card>> listRd = new ResultData<>("S-1", "카드리스트", cardList);
 		return listRd;
 	}

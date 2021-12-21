@@ -22,8 +22,16 @@ public class CardController {
 	
 	@RequestMapping("/usr/card/list")
 	@ResponseBody
-	public String getCardList(int memberId) {
-		ResultData<ArrayList<Card>> listRd = cardService.getCardList(memberId);
+	public String getCardList(
+			int memberId, 
+			String hashTag, 
+			int learningStatus, 
+			int answerHideStatus, 
+			String searchKeyword, 
+			int curPage) {
+		
+		ResultData<ArrayList<Card>> listRd = cardService.getCardList(memberId, hashTag, learningStatus, answerHideStatus, searchKeyword, curPage);
+		
 		return listRd.getData().toString();
 	}
 	

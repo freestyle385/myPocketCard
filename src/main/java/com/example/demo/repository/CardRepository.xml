@@ -4,8 +4,25 @@
 <mapper
 	namespace="com.example.demo.repository.CardRepository">
 	
-	<select id="getCardList" resultType="com.example.demo.vo.Card">
+	<select id="getCardList" resultType="com.example.demo.vo.Card" parameterType="Map">
 		SELECT * FROM questionCard
+		<where>
+			`writerId`=#{memberId} AND
+			<if test="learningStatus >= 0">
+				`learningStatus`=#{learningStatus} AND
+			</if>
+			<if test="answerHideStatus >= 0">
+				`answerHideStatus`=#{answerHideStatus} AND
+			</if>
+			<if test="searchKeyword != null">
+				CONCAT(`title`, `body`) LIKE CONCAT('%', #{searchKeyword}, '%') AND
+			</if>
+			<if test="hashTagArr != null">
+				<foreach collection="hashTagArr" item="hashTag" separator="AND">
+					`tagStatus` LIKE CONCAT('%', #{hashTag}, '%')
+				</foreach>
+			</if>
+		</where>
 	</select>
 	
 	<insert id="doWriteCard" parameterType="com.example.demo.dto.ForWriteCard">
