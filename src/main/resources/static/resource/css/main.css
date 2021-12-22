@@ -2,7 +2,6 @@
 /* main 시작 */
 #main-wrap{
   width: 900px;
-  height: 1000px;
   margin: auto;
   padding: 10px;
 }
@@ -96,6 +95,7 @@
 }
 #third-main{
   margin: auto;
+  margin-bottom: 60px;
 }
 #third-sentence{
   height: 30px;

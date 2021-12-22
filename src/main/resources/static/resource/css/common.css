@@ -102,4 +102,7 @@ body{
   box-shadow: 1px 3px 10px darkgreen;
   border-radius: 10px;
 }
+#nav-bar > .menu > a{
+  display: block;
+}
 /* top-bar 끝 */
