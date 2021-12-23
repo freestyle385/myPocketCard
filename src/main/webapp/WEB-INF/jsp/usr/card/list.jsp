@@ -11,6 +11,7 @@
 
 <!-- css / js -->
 <link rel="stylesheet" type="text/css" href="/resource/css/list.css">
+
 </head>
 
 </body>
@@ -33,11 +34,14 @@
       </div>
     </div>
     <div id="card-list">
+      <!-- 체크박스의 value에 구분자 추가 -->
+      <!-- addString + card.id = id1, id2... -->
+	  <c:set var="addString" value="id"></c:set>
    	  <c:foreach var="card" items="${cardList }">
    	  	<div id="card" class="row">
 	        <div id="card-info" class="cell">
 	          <div id="card-num"><span>${card.id }</span></div>
-	          <div id="checkbox-one"><input type="checkbox" name="selectedCard" value=""/></div>
+	          <div id="checkbox-one"><input type="checkbox" name="selectedCard" value="${addString }${card.id }"/></div>
 	        </div>
 	        <div id="card-body" class="cell">
 	          <div id="title"><span>Q.</span><a href="/usr/card/detail">${card.title }</a></div>
