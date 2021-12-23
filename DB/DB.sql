@@ -22,7 +22,7 @@ CREATE TABLE `questionCard`
 	`tagStatus` VARCHAR(200),
 	`regDate` DATETIME NOT NULL DEFAULT NOW(),
 	`updateDate` DATETIME NOT NULL DEFAULT NOW()
-)
+);
 
 CREATE TABLE `userAnswerCard`
 (

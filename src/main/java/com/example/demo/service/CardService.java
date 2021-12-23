@@ -18,8 +18,15 @@ public class CardService {
 
 	public ResultData<ArrayList<Card>> getCardList(int memberId, String hashTag, int learningStatus, int answerHideStatus, String searchKeyword, int curPage) {
 		
-		String[] hashTagArr = hashTag.split(" "); 
-		ArrayList<Card> cardList = cardRepository.getCardList(memberId, hashTagArr, learningStatus, answerHideStatus, searchKeyword, curPage);
+		String[] hashTagArr = new String[0];
+		if(!Util.emptyChk(hashTag)){
+			hashTagArr = hashTag.split(" ");
+		}
+		
+		int limitStart = (curPage - 1) * 4;
+		int limitRange = 4;
+		
+		ArrayList<Card> cardList = cardRepository.getCardList(memberId, hashTagArr, learningStatus, answerHideStatus, searchKeyword, limitStart, limitRange);
 		ResultData<ArrayList<Card>> listRd = new ResultData<>("S-1", "카드리스트", cardList);
 		return listRd;
 	}
