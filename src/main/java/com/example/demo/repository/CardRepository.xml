@@ -50,5 +50,21 @@
 			NOW()
 			);
 	</insert>
+	
+	<update id="setCardCondition">
+		UPDATE questionCard
+			<set>
+				<if test="learningStatus!=null">
+					`learningStatus`=#{learningStatus} 
+				</if>
+				<if test="answerHideStatus!=null">
+					`answerHideStatus`=#{answerHideStatus} 
+				</if>
+			</set> 
+			WHERE `writerId`=#{memberId} AND `id` IN
+		<foreach collection="cardIdArr" item="cardId" open="(" separator="," close=")">
+			#{cardId}
+		</foreach>
+	</update>
 
 </mapper>

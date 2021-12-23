@@ -35,6 +35,13 @@ public class CardController {
 		return listRd.getData().toString();
 	}
 	
+	@RequestMapping("/usr/card/setCardCondition")
+	@ResponseBody
+	public String setCardCondition(String cardId, int memberId, Integer learningStatus, Integer answerHideStatus) {
+		ResultData<String> setRd = cardService.setCardCondition(cardId, memberId, learningStatus, answerHideStatus);
+		return setRd.getMsg();
+	}
+	
 	@RequestMapping("/usr/card/detail")
 	@ResponseBody
 	public String getCardDetail(int cardId, int memberId) {

@@ -45,4 +45,14 @@ public class CardService {
 		return new ResultData<String>("S-1", "카드 생성 완료");
 	}
 
+	public ResultData<String> setCardCondition(String cardId, int memberId, Integer learningStatus, Integer answerHideStatus) {
+		ArrayList<Integer> cardIdArr = new ArrayList<>();
+		
+		for(String s : cardId.split(" ")) {
+			cardIdArr.add(Integer.parseInt(s));
+		}
+		cardRepository.setCardCondition(cardIdArr, memberId , learningStatus, answerHideStatus);
+		return new ResultData<String>("S-1", "변경성공");
+	}
+
 }
