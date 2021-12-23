@@ -11,7 +11,7 @@ import com.example.demo.vo.Card;
 @Mapper
 public interface CardRepository {
 
-	ArrayList<Card> getCardList(@Param("memberId") int memberId,@Param("hashTagArr") String[] hashTagArr,@Param("learningStatus") int learningStatus,@Param("answerHideStatus") int answerHideStatus,@Param("searchKeyword") String searchKeyword,@Param("limitStart") int limitStart,@Param("limitRange") int limitRange);
+	ArrayList<Card> getCardList(@Param("memberId") int memberId,@Param("hashTagArr") String[] hashTagArr,@Param("learningStatus") int learningStatus,@Param("answerHideStatus") int answerHideStatus,@Param("searchKeyword") String searchKeyword);
 
 	Card getCardDetail(@Param("cardId") int cardId,@Param("memberId") int memberId);
 

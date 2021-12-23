@@ -22,7 +22,7 @@ public class CardController {
 	
 	@RequestMapping("/usr/card/list")
 	@ResponseBody
-	public String getCardList(
+	public ResultData<ArrayList<Card>> getCardList(
 			int memberId, 
 			String hashTag, 
 			int learningStatus, 
@@ -32,7 +32,7 @@ public class CardController {
 		
 		ResultData<ArrayList<Card>> listRd = cardService.getCardList(memberId, hashTag, learningStatus, answerHideStatus, searchKeyword, curPage);
 		
-		return listRd.getData().toString();
+		return listRd;
 	}
 	
 	@RequestMapping("/usr/card/setCardCondition")

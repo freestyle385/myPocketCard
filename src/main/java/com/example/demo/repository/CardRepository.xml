@@ -23,7 +23,6 @@
 				</foreach>
 			</if>
 		</where>
-		LIMIT #{limitStart}, #{limitRange}
 	</select>
 	
 	<insert id="doWriteCard" parameterType="com.example.demo.dto.ForWriteCard">
