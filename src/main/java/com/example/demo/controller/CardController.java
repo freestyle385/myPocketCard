@@ -3,8 +3,10 @@ package com.example.demo.controller;
 import java.util.ArrayList;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.dto.ForWriteCard;
@@ -21,18 +23,19 @@ public class CardController {
 	}
 	
 	@RequestMapping("/usr/card/list")
-	@ResponseBody
-	public ResultData<ArrayList<Card>> getCardList(
+	public String getCardList(
 			int memberId, 
 			String hashTag, 
-			int learningStatus, 
-			int answerHideStatus, 
+			@RequestParam(defaultValue = "-1") int learningStatus, 
+			@RequestParam(defaultValue = "-1") int answerHideStatus, 
 			String searchKeyword, 
-			int curPage) {
+			@RequestParam(defaultValue = "1") int curPage,
+			Model md) {
 		
 		ResultData<ArrayList<Card>> listRd = cardService.getCardList(memberId, hashTag, learningStatus, answerHideStatus, searchKeyword, curPage);
+		md.addAttribute("listRd", listRd);
 		
-		return listRd;
+		return "/usr/card/list";
 	}
 	
 	@RequestMapping("/usr/card/setCardCondition")

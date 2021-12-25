@@ -37,7 +37,7 @@
       <!-- 체크박스의 value에 구분자 추가 -->
       <!-- addString + card.id = id1, id2... -->
 	  <c:set var="addString" value="id"></c:set>
-   	  <c:foreach var="card" items="${cardList }">
+   	  <c:forEach var="card" items="${listRd.data}">
    	  	<div id="card" class="row">
 	        <div id="card-info" class="cell">
 	          <div id="card-num"><span>${card.id }</span></div>
@@ -46,10 +46,10 @@
 	        <div id="card-body" class="cell">
 	          <div id="title"><span>Q.</span><a href="/usr/card/detail">${card.title }</a></div>
 	          <hr>
-	          <div id="hashtag"><span>#.</span>${card.hashTag }</div>
+	          <div id="hashtag"><span>#.</span>${card.tagStatus}</div>
 	        </div>
       	</div>
-   	  </c:foreach>
+   	  </c:forEach>
     </div>
   </div>
   <!-- 리스트 페이징 -->
