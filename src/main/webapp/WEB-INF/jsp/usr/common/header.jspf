@@ -25,7 +25,7 @@
 	  <div id="second-top-bar">
 	    <ul id="nav-bar" class=" row">
 	        <li class="menu cell"><a href="#">카드 생성</a></li>
-	        <li class="menu cell"><a href="#">카드 목록</a></li>
+	        <li class="menu cell"><a href="/usr/card/list">카드 목록</a></li>
 	        <li class="menu cell"><a href="#">마이페이지</a></li>
 	     </ul>
 	  </div>

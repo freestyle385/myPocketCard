@@ -27,7 +27,7 @@
   <div id="list-main">
     <div id="checkbox-wrap" class="row">
       <div id="checkbox-all" class="cell">
-        <input type="checkbox" id="checkedAll"/>
+        <input type="checkbox" id="checkAll" class="chk"/>
       </div>
       <div id="checkbox-all-label" class="cell">
         <label for="checkedAll">전체 선택</label>
@@ -37,24 +37,16 @@
       <!-- 체크박스의 value에 구분자 추가 -->
       <!-- addString + card.id = id1, id2... -->
 	  <c:set var="addString" value="id"></c:set>
-<<<<<<< HEAD
-   	  <c:forEach var="card" items="${listRd.data }">
-=======
-   	  <c:forEach var="card" items="${listRd.data}">
->>>>>>> 3974a76e68ca42a766462a6a09ed58cf0afa026c
+   	  <c:forEach var="card" items="${listRd.getData()}">
    	  	<div id="card" class="row">
 	        <div id="card-info" class="cell">
 	          <div id="card-num"><span>${card.id }</span></div>
-	          <div id="checkbox-one"><input type="checkbox" name="selectedCard" value="${addString }${card.id }"/></div>
+	          <div id="checkbox-one"><input type="checkbox" name="check[]" class="chk" value="${addString }${card.id }"/></div>
 	        </div>
 	        <div id="card-body" class="cell">
 	          <div id="title"><span>Q.</span><a href="/usr/card/detail">${card.title }</a></div>
 	          <hr>
-<<<<<<< HEAD
-	          <div id="hashtag"><span>#.</span>${card.tagStatus }</div>
-=======
 	          <div id="hashtag"><span>#.</span>${card.tagStatus}</div>
->>>>>>> 3974a76e68ca42a766462a6a09ed58cf0afa026c
 	        </div>
       	</div>
    	  </c:forEach>
@@ -63,5 +55,30 @@
   <!-- 리스트 페이징 -->
   <div id="list-paging"></div>
 </section>
+
+<script>
+$(document).ready(function(){
+	  var cardListLen = ${listRd.getData().size()};
+	  
+	  // 전체선택 버튼 클릭시 체크박스 전체 선택
+	    $("#checkAll").click(function(){
+	        if($("#checkAll").is(":checked")){
+	            $(".chk").prop("checked", true);
+	        } else {
+	            $(".chk").prop("checked", false);
+	        }
+	    });
+	  
+	   // 전체 선택 중 한개의 체크박스 선택 해제 시 전체선택 체크박스 해제
+	    $(".chk").click(function(){
+	        if($("input[name='check[]']:checked").length == cardListLen){
+	            $("#checkAll").prop("checked", true);
+	        }else{
+	            $("#checkAll").prop("checked", false);
+	        }
+	    });
+	  
+	});
+</script>
 </body>
 </html>
