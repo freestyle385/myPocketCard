@@ -16,10 +16,21 @@ public class CardService {
 		this.cardRepository = cardRepository;
 	}
 
-	public ResultData<ArrayList<Card>> getCardList(int memberId) {
+	public ResultData<ArrayList<Card>> getCardList(int memberId, String hashTag, int learningStatus, int answerHideStatus, String searchKeyword, int curPage) {
 		
-		ArrayList<Card> cardList = cardRepository.getCardList(memberId);
-		ResultData<ArrayList<Card>> listRd = new ResultData<>("S-1", "카드리스트", cardList);
+		String[] hashTagArr = new String[0];
+		if(!Util.emptyChk(hashTag)){
+			hashTagArr = hashTag.split(" ");
+		}
+		
+		ArrayList<Card> allCardList = cardRepository.getCardList(memberId, hashTagArr, learningStatus, answerHideStatus, searchKeyword);
+		int limitStart = (curPage - 1) * 4 + 1 > allCardList.size() ? allCardList.size() : (curPage - 1) * 4 + 1;
+		int limitRange = limitStart + 4 > allCardList.size() ? allCardList.size() : limitStart + 4;
+		
+		ArrayList<Card> subCardList = new ArrayList<Card>(allCardList.subList(limitStart, limitRange));
+		
+		ResultData<ArrayList<Card>> listRd = new ResultData<>("S-1", "카드리스트, extraDataInfo:allCardListSize", subCardList, allCardList.size() + "");
+		
 		return listRd;
 	}
 
@@ -35,6 +46,16 @@ public class CardService {
 		}
 		cardRepository.doWriteCard(card);
 		return new ResultData<String>("S-1", "카드 생성 완료");
+	}
+
+	public ResultData<String> setCardCondition(String cardId, int memberId, Integer learningStatus, Integer answerHideStatus) {
+		ArrayList<Integer> cardIdArr = new ArrayList<>();
+		
+		for(String s : cardId.split(" ")) {
+			cardIdArr.add(Integer.parseInt(s));
+		}
+		cardRepository.setCardCondition(cardIdArr, memberId , learningStatus, answerHideStatus);
+		return new ResultData<String>("S-1", "변경성공");
 	}
 
 }

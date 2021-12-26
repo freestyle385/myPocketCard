@@ -37,7 +37,11 @@
       <!-- 체크박스의 value에 구분자 추가 -->
       <!-- addString + card.id = id1, id2... -->
 	  <c:set var="addString" value="id"></c:set>
+<<<<<<< HEAD
    	  <c:forEach var="card" items="${listRd.data }">
+=======
+   	  <c:forEach var="card" items="${listRd.data}">
+>>>>>>> 3974a76e68ca42a766462a6a09ed58cf0afa026c
    	  	<div id="card" class="row">
 	        <div id="card-info" class="cell">
 	          <div id="card-num"><span>${card.id }</span></div>
@@ -46,7 +50,11 @@
 	        <div id="card-body" class="cell">
 	          <div id="title"><span>Q.</span><a href="/usr/card/detail">${card.title }</a></div>
 	          <hr>
+<<<<<<< HEAD
 	          <div id="hashtag"><span>#.</span>${card.tagStatus }</div>
+=======
+	          <div id="hashtag"><span>#.</span>${card.tagStatus}</div>
+>>>>>>> 3974a76e68ca42a766462a6a09ed58cf0afa026c
 	        </div>
       	</div>
    	  </c:forEach>

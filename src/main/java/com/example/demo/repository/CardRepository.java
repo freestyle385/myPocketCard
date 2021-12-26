@@ -11,10 +11,12 @@ import com.example.demo.vo.Card;
 @Mapper
 public interface CardRepository {
 
-	ArrayList<Card> getCardList(@Param("memberId") int memberId);
+	ArrayList<Card> getCardList(@Param("memberId") int memberId,@Param("hashTagArr") String[] hashTagArr,@Param("learningStatus") int learningStatus,@Param("answerHideStatus") int answerHideStatus,@Param("searchKeyword") String searchKeyword);
 
 	Card getCardDetail(@Param("cardId") int cardId,@Param("memberId") int memberId);
 
 	void doWriteCard(ForWriteCard card);
+
+	void setCardCondition(@Param("cardIdArr") ArrayList<Integer> cardIdArr,@Param("memberId") int memberId, @Param("learningStatus") Integer learningStatus,@Param("answerHideStatus") Integer answerHideStatus);
 	
 }
