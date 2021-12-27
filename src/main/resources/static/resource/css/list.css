@@ -1,5 +1,6 @@
+/* list 시작 */
 #list-wrap{
-  width: 900px;
+  width: 800px;
   height: 1000px;
   margin: auto;
   padding: 10px;
@@ -107,3 +108,12 @@
   margin: 0 10px;
   color: #008000;
 }
+/* list 끝 */
+
+/* status-filter 시작 */
+#status-filter{
+  width: 140px;
+  border-right: solid 1px green;
+  box-shadow: 1px 1px 5px darkgreen;
+}
+/* status-filter 끝 */
