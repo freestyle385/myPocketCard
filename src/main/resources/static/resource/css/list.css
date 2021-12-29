@@ -1,10 +1,51 @@
-/* list 시작 */
+/* empty-wrap 시작 */
+#empty-wrap{
+  width: 150px;
+}
+/* empty-wrap 끝 */
+
+/* list의 검색 폼 시작 */
 #list-wrap{
   width: 800px;
   height: 1000px;
   margin: auto;
   padding: 10px;
   padding-top: 40px;
+}
+#search-form{
+  width: 100%;
+  height: 200px;
+}
+#filter-wrap{
+  width: 60%;
+  height: 100px;
+  margin: auto;
+}
+.filter{
+  width: 33.33%;
+  height: 100%;
+}
+.filter-name{
+  width: 100%;
+  height: 40%;
+  text-align: center;
+}
+.filter-name > span{
+  line-height: 40px;
+}
+.filter-select{
+  width: 100%;
+  height: 60%;
+  text-align: center;
+}
+.filter-select > select{
+  width: 80%;
+  height: 30px;
+  text-align: center;
+  font-family: inherit;
+  border: solid 1px #008000;
+  border-radius: 4px;
+  box-shadow: 1px 1px 5px darkgray;
 }
 #searchKeyword-box{
   display: flex;
@@ -18,6 +59,7 @@
   padding: 10px 20px;
   background-color: #ffffff;
   border: 2px solid #008000;
+  box-shadow: 1px 2px 5px darkgray;
 }
 #searchKeyword-box > input{
   width: 80%;
@@ -37,6 +79,9 @@
   font-size: 1rem;
   fill: #008000;
 }
+/* list의 검색 폼 끝 */
+
+/* list 시작 */
 #list-main{
   width: 100%;
 }
@@ -109,11 +154,3 @@
   color: #008000;
 }
 /* list 끝 */
-
-/* status-filter 시작 */
-#status-filter{
-  width: 140px;
-  border-right: solid 1px green;
-  box-shadow: 1px 1px 5px darkgreen;
-}
-/* status-filter 끝 */

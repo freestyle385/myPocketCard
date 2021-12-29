@@ -78,7 +78,7 @@ body{
   width: 100%;
   height: 40px;
   border-bottom: solid 3px green;
-  box-shadow: 1px 3px 4px darkgreen; 
+  box-shadow: 1px 3px 4px darkgray; 
 }
 #nav-bar{
   margin: auto;
@@ -98,9 +98,7 @@ body{
 }
 #nav-bar > .menu:hover {
   color: #009300;
-  background-color: #D1FFC9;
-  box-shadow: 1px 3px 10px darkgreen;
-  border-radius: 10px;
+  background-color: #E3FFDB;
 }
 #nav-bar > .menu > a{
   display: block;
@@ -111,65 +109,3 @@ article{
   display: flex;
 }
 /* article 끝 */
-/* 필터/변경 사이드바 공통 시작 */
-.side-bar-name{
-  width: 100%;
-  height: 50px;
-  margin-top: 40px;
-  margin-bottom: 30px;
-}
-.side-bar-name > h4{
-  text-align: center;
-  line-height: 50px;
-  color: #008000;
-}
-.side-bar-form{
-  width: 90%;
-  height: 300px;
-  margin: auto;
-}
-.filter{
-  width: 100%;
-  height: 120px;
-}
-.filter-name{
-  width: 100%;
-  height: 40%;
-  text-align: center;
-}
-.filter-name > span{
-  line-height: 40px;
-}
-.filter-select{
-  width: 100%;
-  height: 60%;
-  text-align: center;
-}
-.filter-select > select{
-  width: 90%;
-  height: 30px;
-  text-align: center;
-  font-family: inherit;
-  border: solid 1px green;
-  border-radius: 4px;
-  box-shadow: 1px 1px 5px darkgreen;
-}
-.btn{
-  width: 80px;
-  margin: 20px auto;
-}
-.btn > input{
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  font-family: inherit;
-  background-color: #008000;
-  color: white;
-  border: solid 1px green;
-  border-radius: 4px;
-  box-shadow: 1px 1px 5px darkgreen;
-  cursor: pointer;
-  width: 100%;
-  height: 30px;
-}
-/* 필터/변경 사이드바 공통 끝 */

@@ -1,5 +1,66 @@
+/* status-setter 시작 */
 #status-setter{
-  width: 140px;
-  border-left: solid 1px green;
-  box-shadow: 1px 1px 5px darkgreen;
+  width: 150px;
+  box-shadow: 1px 1px 5px lightgray;
 }
+.side-bar-name{
+  width: 100%;
+  height: 50px;
+  margin-top: 170px;
+  margin-bottom: 10px;
+}
+.side-bar-name > h4{
+  text-align: center;
+  line-height: 50px;
+  color: #008000;
+}
+.setter-form{
+  width: 100%;
+  height: 100px;
+  margin: auto;
+}
+.setter{
+  width: 100%;
+  height: 120px;
+}
+.setter-name{
+  width: 100%;
+  height: 40%;
+  text-align: center;
+}
+.setter-name > span{
+  line-height: 40px;
+}
+.setter-select{
+  width: 100%;
+  height: 60%;
+  text-align: center;
+}
+.setter-select > select{
+  width: 90%;
+  height: 30px;
+  text-align: center;
+  font-family: inherit;
+  border: solid 1px green;
+  border-radius: 4px;
+  box-shadow: 1px 1px 5px darkgray;
+}
+.btn{
+  width: 80px;
+  margin: 20px auto;
+}
+.btn > input{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-family: inherit;
+  background-color: #008000;
+  color: white;
+  border: solid 1px green;
+  border-radius: 4px;
+  box-shadow: 1px 1px 5px darkgray;
+  cursor: pointer;
+  width: 100%;
+  height: 30px;
+}
+/* status-setter 끝 */
