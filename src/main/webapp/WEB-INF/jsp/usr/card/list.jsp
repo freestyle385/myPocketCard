@@ -60,8 +60,8 @@
   	</div>
   	<!-- 검색창 -->
    	<div id="searchKeyword-box">
-      <input name="searchKeyword" placeholder="제목과 내용의 키워드를 검색해보세요." value="${param.searchKeyword}">
-	  <button type="submit">
+      <input name="searchKeyword" placeholder="제목과 내용의 키워드를 검색해보세요." value="${searchKeyword}">
+	  <button type="submit" class="search-btn">
 	      <svg aria-hidden="true" data-prefix="fas" data-icon="search" class="search_svg__svg-inline--fa search_svg__fa-search search_svg__fa-w-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1.3rem" height="1.3rem"><path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path></svg>
 	  </button>
 	</div>
@@ -77,12 +77,12 @@
         <label for="checkedAll">전체 선택</label>
       </div>
     </div>
-    <div id="card-list">
+    <form id="card-list" action="usr/card/list" method="GET">
       <!-- 체크박스의 value에 'id' 추가 -->
       <!-- addString + card.id = id1, id2... -->
 	  <c:set var="addString" value="id"></c:set>
    	  <c:forEach var="card" items="${listRd.getData()}">
-   	  	<div id="card" class="row">
+   	  	<div id="card" class="row" >
 	        <div id="card-info" class="cell">
 	          <div id="card-num"><span>${card.id }</span></div>
 	          <div id="checkbox-one"><input type="checkbox" name="selected" class="chk" value="${addString }${card.id }"/></div>
@@ -94,7 +94,7 @@
 	        </div>
       	</div>
    	  </c:forEach>
-    </div>
+    </form>
   </div>
   <!-- 리스트 페이징 -->
   <div id="list-paging"></div>
@@ -127,32 +127,15 @@ $(document).ready(function(){
         }
     });
  	
-   	// 카드 상태 필터/변경 버튼 클릭 시 체크된 카드를 배열로 정리하여 넘김
- 	$(".filter-btn, .change-btn").click(function(){
- 		// selectedList 배열
- 		var selectedList = new Array();
- 		var $this = $(this);
+   	// 상태 변경 버튼 클릭 시 card-list form 안의 체크박스 데이터도 제출됨
+ 	$(".change-btn").click(function(){
  		
- 		$("input[name=selected]:checked").each(function() {		                				
- 			selectedList.push($(this).val());
- 		});
- 		
-		if(selectedList.length == 0){
+		if($("input[name=selected]:checked").length == 0){
 			alert("카드를 선택하세요.");
 			return;
 		}
 		
-		/* // https://devfootprint.tistory.com/58 참고해서 배열 넘김 기능 구현 요
-		// 체크된 value 외의 다른 값이 필요하다면 hidden input으로 넘겨줄 것
-		// 필터/변경에 따라 각각 다른 제출 버튼 실행
-		if($this.hasClass("filter-btn")){
-			$("#filter-form").attr("action", "/usr/card/list");
-			$("#change-form").submit();
-		} else{
-			$("#change-form").attr("action", "/usr/card/list");
-			$("#change-form").submit();
-		} */
-	
+		$("#card-list").submit();
 	});  
 });
 </script>

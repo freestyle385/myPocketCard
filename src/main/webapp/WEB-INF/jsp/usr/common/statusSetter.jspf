@@ -11,7 +11,7 @@
 <!-- 카드 상태 설정 -->
 <section id="status-setter" class="cell-r">
   <div class="side-bar-name"><h4>카드 상태 변경</h4></div>
-  <form action="/usr/card/setCardCondition" class="setter-form">
+  <form action="/usr/card/setCardCondition" method="POST" class="setter-form">
     <div class="setter">
       <div class="setter-name"><span>학습 상태 변경</span></div>
       <div class="setter-select">
@@ -32,7 +32,7 @@
         </select>
       </div>
     </div>
-    <div class="btn"><input type="submit" value="저장"></div>
+    <div class="btn"><input class="change-btn" type="submit" value="저장"></div>
   </form>
 </section>
 </body>
