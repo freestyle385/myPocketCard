@@ -77,7 +77,7 @@
         <label for="checkedAll">전체 선택</label>
       </div>
     </div>
-    <form id="card-list" action="usr/card/list" method="GET">
+    <form id="card-list" action="usr/card/list" method="POST">
       <!-- 체크박스의 value에 'id' 추가 -->
       <!-- addString + card.id = id1, id2... -->
 	  <c:set var="addString" value="id"></c:set>
