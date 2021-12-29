@@ -24,7 +24,7 @@
 <section id="list-wrap" class="cell">
   
   <!-- 검색 폼 -->
-  <form action="usr/card/list" method="GET" id="search-form">     
+  <form action="/usr/card/list" method="GET" id="search-form">     
     <!-- 상태 검색 필터 -->
     <div id="filter-wrap" class="row">
       <div class="filter cell">
@@ -77,7 +77,7 @@
         <label for="checkedAll">전체 선택</label>
       </div>
     </div>
-    <form id="card-list" action="usr/card/list" method="POST">
+    <form id="card-list" action="/usr/card/setCardCondition" method="POST">
       <!-- 체크박스의 value에 'id' 추가 -->
       <!-- addString + card.id = id1, id2... -->
 	  <c:set var="addString" value="id"></c:set>
