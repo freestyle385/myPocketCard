@@ -109,3 +109,8 @@ article{
   display: flex;
 }
 /* article 끝 */
+/* empty-wrap 시작 */
+.empty-wrap{
+  width: 150px;
+}
+/* empty-wrap 끝 */
