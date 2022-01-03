@@ -32,6 +32,7 @@ public class CardController {
 			@RequestParam(defaultValue = "1") int curPage,
 			Model md) {
 		
+		//listRd info (결과 코드, 데이터 정보, 카드리스트, 전체카드의 수(Int))
 		ResultData<ArrayList<Card>> listRd = cardService.getCardList(memberId, hashTag, learningStatus, answerHideStatus, searchKeyword, curPage);
 		md.addAttribute("listRd", listRd);
 		
@@ -46,10 +47,9 @@ public class CardController {
 	}
 	
 	@RequestMapping("/usr/card/detail")
-	@ResponseBody
 	public String getCardDetail(int cardId, int memberId) {
 		ResultData<Card> cardRd = cardService.getCardDetail(cardId, memberId);
-		return "";
+		return "/usr/card/detail";
 	}
 	
 	@RequestMapping("/usr/card/doWrite")
@@ -60,7 +60,6 @@ public class CardController {
 	}
 	
 	@RequestMapping("/usr/card/showWrite")
-	@ResponseBody
 	public String showWriteCard() {
 		return "/usr/card/write";
 	}

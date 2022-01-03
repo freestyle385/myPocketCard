@@ -33,4 +33,4 @@ CREATE TABLE `userAnswerCard`
 	`body` TEXT NOT NULL,
 	`regDate` DATETIME NOT NULL DEFAULT NOW(),
 	`updateDate` DATETIME NOT NULL DEFAULT NOW()
-)
+);
