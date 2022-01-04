@@ -47,8 +47,12 @@ public class CardController {
 	}
 	
 	@RequestMapping("/usr/card/detail")
-	public String getCardDetail(int cardId, int memberId) {
+	public String getCardDetail(Model md, int cardId, int memberId) {
+		
+		//cardRd 정보 (결과 코드, 결과 메세지, 카드VO)
 		ResultData<Card> cardRd = cardService.getCardDetail(cardId, memberId);
+		md.addAttribute("cardRd", cardRd);
+		
 		return "/usr/card/detail";
 	}
 	
