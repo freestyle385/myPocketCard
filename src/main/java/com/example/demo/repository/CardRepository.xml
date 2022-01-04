@@ -23,6 +23,7 @@
 				</foreach>
 			</if>
 		</where>
+		ORDER BY `id` DESC
 	</select>
 	
 	<insert id="doWriteCard" parameterType="com.example.demo.dto.ForWriteCard">
