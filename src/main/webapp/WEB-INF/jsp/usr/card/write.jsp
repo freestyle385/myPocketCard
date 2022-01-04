@@ -34,7 +34,7 @@
   </div>
   <span id="msg">*입력 후 엔터 또는 스페이스바를 누르면 적용됩니다</span>
   
-  <form id="card" class="row" action="usr/card/doWrite" method="POST">
+  <form id="card" class="row" action="../../usr/card/doWrite" method="POST">
     <div id="card-info" class="cell"></div>
     <div id="card-body" class="cell">
       <div id="title"><span>Q.</span><textarea name="title" rows="1" autocomplete="off" placeholder="질문을 입력해주세요."></textarea></div>
