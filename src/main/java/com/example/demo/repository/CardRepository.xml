@@ -32,7 +32,7 @@
 			`title`, 
 			`body`, 
 			`learningStatus`, 
-			`answerStatus`, 
+			`answerHideStatus`, 
 			`tagStatus`, 
 			`regDate`, 
 			`updateDate`
