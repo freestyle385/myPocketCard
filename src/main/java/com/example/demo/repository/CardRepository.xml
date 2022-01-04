@@ -65,5 +65,9 @@
 			#{cardId}
 		</foreach>
 	</update>
+	
+	<select id="getCardDetail" resultType="com.example.demo.vo.Card">
+		SELECT * FROM `questionCard` WHERE `id` = #{cardId} AND `writerId` = #{memberId}
+	</select>
 
 </mapper>

@@ -23,10 +23,12 @@ public class CardService {
 			hashTagArr = hashTag.split(" ");
 		}
 		
+
 		ArrayList<Card> allCardList = cardRepository.getCardList(memberId, hashTagArr, learningStatus, answerHideStatus, searchKeyword);
-		int limitStart = (curPage - 1) * 4 + 1 > allCardList.size() ? allCardList.size() : (curPage - 1) * 4 + 1;
+		int limitStart = (curPage - 1) * 4 > allCardList.size() ? allCardList.size() : (curPage - 1) * 4;
 		int limitRange = limitStart + 4 > allCardList.size() ? allCardList.size() : limitStart + 4;
 		
+		//전체 게시물에서 subList를 통한 Limit		
 		ArrayList<Card> subCardList = new ArrayList<Card>(allCardList.subList(limitStart, limitRange));
 		
 		ResultData<ArrayList<Card>> listRd = new ResultData<>("S-1", "카드리스트, extraDataInfo:allCardListSize", subCardList, allCardList.size() + "");
