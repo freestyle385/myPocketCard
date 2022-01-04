@@ -89,7 +89,7 @@
 	          <div id="checkbox-one"><input type="checkbox" name="selected" class="chk" value="${addString }${card.id }"/></div>
 	        </div>
 	        <div id="card-body" class="cell">
-	          <div id="title"><span>Q.</span><a href="/usr/card/detail">${card.title }</a></div>
+	          <div id="title"><span>Q.</span><a href="/usr/card/detail?id=${card.id}">${card.title }</a></div>
 	          <hr>
 	          <div id="hashtag"><span>#.</span>${card.tagStatus}</div>
 	        </div>
