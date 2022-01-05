@@ -11,9 +11,6 @@
 			<if test="learningStatus >= 0">
 				AND `learningStatus`=#{learningStatus}
 			</if>
-			<if test="answerHideStatus >= 0">
-				AND `answerHideStatus`=#{answerHideStatus}
-			</if>
 			<if test="searchKeyword != null">
 				AND CONCAT(`title`, `body`) LIKE CONCAT('%', #{searchKeyword}, '%')
 			</if>
@@ -32,8 +29,6 @@
 			`writerId`, 
 			`title`, 
 			`body`, 
-			`learningStatus`, 
-			`answerHideStatus`, 
 			`tagStatus`, 
 			`regDate`, 
 			`updateDate`
@@ -43,12 +38,10 @@
 			#{writerId}, 
 			#{title}, 
 			#{body}, 
-			#{learningStatus}, 
-			#{answerStatus}, 
 			#{tagStatus}, 
 			NOW(), 
 			NOW()
-			);
+			)
 	</insert>
 	
 	<update id="setCardCondition">
@@ -56,9 +49,6 @@
 			<set>
 				<if test="learningStatus!=null">
 					`learningStatus`=#{learningStatus} 
-				</if>
-				<if test="answerHideStatus!=null">
-					`answerHideStatus`=#{answerHideStatus} 
 				</if>
 			</set> 
 			WHERE `writerId`=#{memberId} AND `id` IN

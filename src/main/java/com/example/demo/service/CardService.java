@@ -16,7 +16,7 @@ public class CardService {
 		this.cardRepository = cardRepository;
 	}
 
-	public ResultData<ArrayList<Card>> getCardList(int memberId, String hashTag, int learningStatus, int answerHideStatus, String searchKeyword, int curPage) {
+	public ResultData<ArrayList<Card>> getCardList(int memberId, String hashTag, int learningStatus, String searchKeyword, int curPage) {
 		
 		String[] hashTagArr = new String[0];
 		if(!Util.emptyChk(hashTag)){
@@ -24,7 +24,7 @@ public class CardService {
 		}
 		
 
-		ArrayList<Card> allCardList = cardRepository.getCardList(memberId, hashTagArr, learningStatus, answerHideStatus, searchKeyword);
+		ArrayList<Card> allCardList = cardRepository.getCardList(memberId, hashTagArr, learningStatus, searchKeyword);
 		int limitStart = (curPage - 1) * 4 > allCardList.size() ? allCardList.size() : (curPage - 1) * 4;
 		int limitRange = limitStart + 4 > allCardList.size() ? allCardList.size() : limitStart + 4;
 		
@@ -50,13 +50,13 @@ public class CardService {
 		return new ResultData<String>("S-1", "카드 생성 완료");
 	}
 
-	public ResultData<String> setCardCondition(String cardId, int memberId, Integer learningStatus, Integer answerHideStatus) {
+	public ResultData<String> setCardCondition(String cardId, int memberId, Integer learningStatus) {
 		ArrayList<Integer> cardIdArr = new ArrayList<>();
 		
 		for(String s : cardId.split(" ")) {
 			cardIdArr.add(Integer.parseInt(s));
 		}
-		cardRepository.setCardCondition(cardIdArr, memberId , learningStatus, answerHideStatus);
+		cardRepository.setCardCondition(cardIdArr, memberId , learningStatus);
 		return new ResultData<String>("S-1", "변경성공");
 	}
 
