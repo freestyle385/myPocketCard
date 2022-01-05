@@ -42,21 +42,8 @@
   margin-right: 5px;
   margin-bottom: 5px;
 }
-#tag-list > .tag-item > .del-btn{
-  cursor: pointer;
-  color: #008000;
-}
-#tag-list > .tag-item > .del-btn:hover{
-  color: #960707;
-}
-#msg{
-  color: darkgray;
-  font-family: inherit;
-  font-size: 10px;
-}
 #card{
   width: 100%;
-  height: 600px;
   margin-top: 20px;
   background-color: #FAF4C0;
   border-radius: 10px;
@@ -65,6 +52,12 @@
 #card-info{
   width: 40px;
   height: 100%;
+  margin-top: 15px;
+}
+#card-num{
+  height: 50%;
+  line-height: 60px;
+  text-align: center;
 }
 #card-body{
   width: calc(100% - 50px);
@@ -76,42 +69,61 @@
   justify-content: flex-start;
   align-items: stretch;
   padding: 1rem 0px;
-  height: 60px;
+  height: 50px;
+  margin-top: 20px;
 }
 #question > span{
-  margin: 15px 10px;
+  margin: 0 10px;
   color: #008000;
-}
-#question > textarea{
-  margin-top: 15px;
-  width: 90%;
-  height: 100%;
-  border: none;
-  resize: none;
-  background-color: inherit;
-  outline: none;
-  font-family: inherit;
-  font-size: 1rem;
 }
 #card-body > hr{
   width: 98%;
   margin: auto;
 }
 #answer{
+  display: none;
+}
+#answer.active{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  padding: 1rem 0px;
+  margin: 20px 0;
+}
+#answer > span{
+  margin: 0 10px;
+  color: #008000;
+}
+#disappearable{
+  display: none;
+}
+#disappearable.active{
+  display: block;
+}
+#answer-btn{
+  width: 100%;
+  margin-top: 10px;
+  text-align: center;
+  color: #008000;
+  cursor: pointer;
+}
+#usr-answer{
   display: flex;
   flex-flow: row nowrap;
   justify-content: flex-start;
   align-items: stretch;
   padding: 1rem 0px;
 }
-#answer > span{
-  margin: 20px 10px;
+#usr-answer > span{
+  margin: 0 10px;
+  margin-top: 15px;
   color: #008000;
 }
-#answer > textarea{
+#usr-answer > textarea{
   margin-top: 15px;
   width: 90%;
-  height: 100%;
+  height: 60%;
   resize: none;
   border: none;
   background-color: inherit;
@@ -120,41 +132,51 @@
   font-size: 1rem;
   overflow-y: scroll;
 }
+
 .btn-list{
   width: 100%;
 }
-.btn{
+.del-wrap{
   width: 80px;
+  height: 30px;
   margin: 20px auto;
-}
-.back-btn{
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  font-family: inherit;
   background-color: #960707;
   color: white;
   border: solid 1px #BA2B2B;
   border-radius: 4px;
   box-shadow: 1px 1px 5px darkgray;
-  cursor: pointer;
-  width: 100%;
-  height: 30px;
-  font-size: 15px;
 }
-.submit-btn{
+.card-del-btn{
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  display: block;
   font-family: inherit;
+  font-size: 15px;
+  text-align: center;
+  line-height: 30px;
+  cursor: pointer;
+  width: 100%;
+}
+.modify-wrap{
+  width: 80px;
+  height: 30px;
+  margin: 20px auto;
   background-color: #008000;
   color: white;
   border: solid 1px green;
   border-radius: 4px;
   box-shadow: 1px 1px 5px darkgray;
+}
+.modify-btn{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: block;
+  font-family: inherit;
+  text-align: center;
+  line-height: 30px;
   cursor: pointer;
   width: 100%;
-  height: 30px;
-  font-size: 15px;
 }
 /* card-wrap 끝 */

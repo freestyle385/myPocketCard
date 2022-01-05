@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -79,9 +80,15 @@
 	          <div id="checkbox-one"><input type="checkbox" name="selected" class="chk" value="${addString }${card.id }"/></div>
 	        </div>
 	        <div id="card-body" class="cell">
-	          <div id="title"><span>Q.</span><a href="/usr/card/detail?id=${card.id}">${card.title }</a></div>
+	          <div id="title"><span>Q.</span><a href="/usr/card/detail?cardId=${card.id}">${card.title }</a></div>
 	          <hr>
-	          <div id="hashtag"><span>#.</span>${card.tagStatus}</div>
+	          <div id="hashtag"><span>#.</span>
+	          	<ul>
+	          		<c:forEach var="tagValue" items="${fn:split(card.tagStatus, ',')}">
+    					<li class="tag-item cell">#${tagValue}</li>
+    				</c:forEach>
+	          	</ul>
+	          </div>
 	        </div>
       	</div>
    	  </c:forEach>
