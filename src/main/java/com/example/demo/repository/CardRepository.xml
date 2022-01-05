@@ -33,7 +33,7 @@
 			`title`, 
 			`body`, 
 			`learningStatus`, 
-			`answerStatus`, 
+			`answerHideStatus`, 
 			`tagStatus`, 
 			`regDate`, 
 			`updateDate`
@@ -44,7 +44,7 @@
 			#{title}, 
 			#{body}, 
 			#{learningStatus}, 
-			#{answerStatus}, 
+			#{answerHideStatus}, 
 			#{tagStatus}, 
 			NOW(), 
 			NOW()
