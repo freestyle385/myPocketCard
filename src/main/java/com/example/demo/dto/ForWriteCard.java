@@ -14,6 +14,5 @@ public class ForWriteCard {
 	private String title;
 	private String body;
 	private Integer learningStatus;
-	private Integer answerHideStatus;
 	private String tagStatus = "";	//default Value
 }

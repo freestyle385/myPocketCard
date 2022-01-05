@@ -27,13 +27,12 @@ public class CardController {
 			int memberId, 
 			String hashTag, 
 			@RequestParam(defaultValue = "-1") int learningStatus, 
-			@RequestParam(defaultValue = "-1") int answerHideStatus, 
 			String searchKeyword, 
 			@RequestParam(defaultValue = "1") int curPage,
 			Model md) {
 		
 		//listRd info (결과 코드, 데이터 정보, 카드리스트, 전체카드의 수(Int))
-		ResultData<ArrayList<Card>> listRd = cardService.getCardList(memberId, hashTag, learningStatus, answerHideStatus, searchKeyword, curPage);
+		ResultData<ArrayList<Card>> listRd = cardService.getCardList(memberId, hashTag, learningStatus, searchKeyword, curPage);
 		md.addAttribute("listRd", listRd);
 		
 		return "/usr/card/list";
@@ -41,8 +40,8 @@ public class CardController {
 	
 	@RequestMapping("/usr/card/setCardCondition")
 	@ResponseBody
-	public String setCardCondition(String cardId, int memberId, Integer learningStatus, Integer answerHideStatus) {
-		ResultData<String> setRd = cardService.setCardCondition(cardId, memberId, learningStatus, answerHideStatus);
+	public String setCardCondition(String cardId, int memberId, Integer learningStatus) {
+		ResultData<String> setRd = cardService.setCardCondition(cardId, memberId, learningStatus);
 		return setRd.getMsg();
 	}
 	

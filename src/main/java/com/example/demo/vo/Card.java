@@ -13,7 +13,6 @@ public class Card {
 	private String title;
 	private String body;
 	private int learningStatus;
-	private int answerHideStatus;
 	private String tagStatus;
 	private String regDate;
 	private String updateDate;
