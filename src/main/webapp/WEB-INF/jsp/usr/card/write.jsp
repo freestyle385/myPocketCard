@@ -22,9 +22,6 @@
 <!-- card-wrap -->
 <section id="card-wrap" class="cell">
   <div id="tag-wrap" class="row">
-    <!-- 게시물 저장 시 함께 넘겨줄 tag값들을 위한 hidden input -->
-    <input type="hidden" value="" name="tagStatus" id="rdTag"/>
-    
     <div id="tag-input" class="cell">
       <input type="text" id="tag" placeholder="추가할 해시 태그"/>
     </div>
@@ -35,18 +32,20 @@
   <span id="msg">*입력 후 엔터 또는 스페이스바를 누르면 적용됩니다</span>
   
   <form id="card" class="row" action="../../usr/card/doWrite" method="POST">
+    <!-- 게시물 저장 시 함께 넘겨줄 tag값들을 위한 hidden input -->
+    <input type="hidden" value="" name="tagStatus" id="rdTag"/>
     <div id="card-info" class="cell"></div>
     <div id="card-body" class="cell">
-      <div id="title"><span>Q.</span><textarea name="title" rows="1" autocomplete="off" placeholder="질문을 입력해주세요."></textarea></div>
+      <div id="question"><span>Q.</span><textarea name="title" rows="1" autocomplete="off" placeholder="질문을 입력해주세요."></textarea></div>
       <hr>
-      <div id="body"><span>A.</span><textarea name="body" rows="20" autocomplete="off" placeholder="답변을 입력해주세요."></textarea></div>
+      <div id="answer"><span>A.</span><textarea name="body" rows="20" autocomplete="off" placeholder="답변을 입력해주세요."></textarea></div>
     </div>
     <div class="btn-list row">
       <div class="btn cell">
         <input class="back-btn" type="button" value="뒤로가기" onclick="history.back(-1);">
       </div>
       <div class="btn cell-r">
-        <input class="submit-btn" type="submit" value="저장"/>
+        <input class="submit-btn" type="button" value="저장"/>
       </div>
     </div>
    </form>
@@ -75,13 +74,14 @@ $(document).ready(function () {
 	  }
 	  
 	  // 게시물 저장 버튼 클릭 시 tag값들을 같이 넘겨줌
-	  $(".submit-btn").on("submit", function (e) {
-	    // marginTag 데이터를 hidden input에 적용
-	    var value = marginTag();
+	  $(".submit-btn").on("click", function (e) {
+	    // marginTag 데이터를 hidden input에 문자열로 적용
+	    var value = marginTag().toString();
 	    $("#rdTag").val(value);
-
-	    $(this).submit();
+		
+	    $("#card").submit();
 	  });
+	  
 	  
 	  // 태그 추가 이벤트
 	  $("#tag").on("keyup", function (e) {

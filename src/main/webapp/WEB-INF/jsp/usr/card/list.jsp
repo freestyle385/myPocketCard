@@ -38,23 +38,13 @@
           </select>
         </div>
       </div>
-      <div class="filter-box cell">
+      <div class="filter-box cell-r">
         <div class="filter-name"><span>학습 상태 필터</span></div>
         <div class="filter-select">
           <select name="learningStatus">
             <option value="-1" selected>전체 선택</option>
             <option value="0">학습 필요</option>
             <option value="1">학습 완료</option>
-          </select>
-        </div>
-      </div>
-      <div class="filter-box cell-r">
-        <div class="filter-name"><span>정답 상태 필터</span></div>
-        <div class="filter-select">
-          <select name="answerHideStatus">
-            <option value="-1" selected>전체 선택</option>
-            <option value="0">정답 표시</option>
-            <option value="1">정답 숨김</option>
           </select>
         </div>
       </div>

@@ -43,7 +43,7 @@
 			#{tagStatus}, 
 			NOW(), 
 			NOW()
-			);
+			)
 	</insert>
 	
 	<update id="setCardCondition">

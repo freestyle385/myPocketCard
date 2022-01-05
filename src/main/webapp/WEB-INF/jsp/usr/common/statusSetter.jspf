@@ -22,16 +22,7 @@
         </select>
       </div>
     </div>
-    <div class="setter-box">
-      <div class="setter-name"><span>정답 상태 변경</span></div>
-      <div class="setter-select">
-        <select name="answerHideStatus">
-          <option disabled="disabled" selected>변경할 상태</option>
-          <option value="0">정답 표시</option>
-          <option value="1">정답 숨김</option>
-        </select>
-      </div>
-    </div>
+    
     <div class="btn"><input class="change-btn" type="submit" value="저장"></div>
   </form>
 </section>

@@ -71,7 +71,7 @@
   width: calc(100% - 50px);
   height: 100%;
 }
-#title{
+#question{
   display: flex;
   flex-flow: row nowrap;
   justify-content: flex-start;
@@ -80,11 +80,11 @@
   line-height: 60px;
   height: 60px;
 }
-#title > span{
+#question > span{
   margin: 0 10px;
   color: #008000;
 }
-#title > textarea{
+#question > textarea{
   margin-top: 15px;
   width: 90%;
   height: 100%;
@@ -99,7 +99,7 @@
   width: 98%;
   margin: auto;
 }
-#body{
+#answer{
   display: flex;
   flex-flow: row nowrap;
   justify-content: flex-start;
@@ -107,11 +107,11 @@
   padding: 1rem 0px;
   line-height: 60px;
 }
-#body > span{
+#answer > span{
   margin: 0 10px;
   color: #008000;
 }
-#body > textarea{
+#answer > textarea{
   margin-top: 15px;
   width: 90%;
   height: 100%;
