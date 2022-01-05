@@ -87,12 +87,17 @@ $(document).ready(function () {
 	  $("#tag").on("keyup", function (e) {
 	    var self = $(this);
 
-	    // input에서 엔터나 스페이스바를 눌렀을 때 실행
-	    if (e.key === "Enter" || e.keyCode == 32) {
+	    // input에서 엔터를 눌렀을 때 실행
+	    if (e.key === "Enter") {
 
-	      var tagValue = self.val(); // 값 가져오기
-
+	      var tagValue = self.val().trim(); // 값 가져오기
+		
 	      // tagValue가 빈 칸이면 실행X
+	      if (tagValue == ""){
+	    	  alert("올바르지 않은 태그입니다.");
+	    	  return;
+	      }
+	      
 	      if (tagValue !== "") {
 
 	        // 같은 태그가 있는지 검사. 있다면 해당 값이 array로 return.
@@ -107,8 +112,11 @@ $(document).ready(function () {
 	          self.val("");
 	        } else {
 	          alert("이미 존재하는 태그입니다.");
+	          return;
 	        }
-	      }
+	      } 
+	    	  
+	    
 	      e.preventDefault(); // 스페이스바로 빈 공간이 생기지 않도록 방지
 	    }
 	  });

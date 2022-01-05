@@ -41,20 +41,21 @@
       <div id="question"><span>Q.</span>${cardRd.getData().getTitle()}</div>
       <hr>
       <!-- 정답 숨김 시작 -->
-      <div id="answer" class="active"><span>A.</span>${cardRd.getData().getBody()}</div>
-      <hr id="disappearable" class="active">
+      <div id="answer" class=""><span>A.</span>${cardRd.getData().getBody()}</div>
+      <hr id="disappearable" class="">
       <!-- 정답 숨김 끝 -->
-      <div id="answer-btn" class="active">↑정답 확인하기↑</div>
+      <div id="answer-check" class="active">↓정답 확인하기↓</div>
+      <div id="answer-hide" class="">↑정답 숨기기↑</div>
       <div id="usr-answer"><span>A.</span><textarea rows="20" autocomplete="off" placeholder="자유롭게 정답을 작성해보세요. 이 정답은 저장되지 않습니다."></textarea></div>
     </div>
    </div>
   
    <div class="btn-list row">
       <div class="del-wrap cell">
-        <a class="card-del-btn" onclick="if (confirm('카드를 삭제하시겠습니까?') == false) {return false};" href="/usr/card/delete">삭제</a>
+        <a class="card-del-btn" onclick="if (confirm('카드를 삭제하시겠습니까?') == false) {return false};" href="/usr/card/delete?cardId=${cardRd.getData().getId()}">삭제</a>
       </div>
       <div class="modify-wrap cell-r">
-        <a class="modify-btn" href="/usr/card/modify">수정</a>
+        <a class="modify-btn" href="/usr/card/modify?cardId=${cardRd.getData().getId()}">수정</a>
       </div>
     </div>
 </section>
@@ -66,17 +67,22 @@
 <script>
 $(document).ready(function(){
 	// 정답 숨김 관련  
-	$("#answer-btn").click(function(){
-	    if($("#answer-btn").hasClass("active")){
-	      $("#answer").removeClass("active");
-	      $("#disappearable").removeClass("active");
-	      $(this).removeClass("active");
-	    } else{
-	      $("#answer").addClass("active");
-	      $("#disappearable").addClass("active");
-	      $(this).addClass("active");
-	    }
-	  })
+	$("#answer-check").click(function(){
+		$("#answer").addClass("active");
+      	$("#disappearable").addClass("active");
+      	$(this).removeClass("active");
+      	$("#answer-hide").addClass("active");
+	    
+	})
+	$("#answer-hide").click(function(){
+		$("#answer").removeClass("active");
+	    $("#disappearable").removeClass("active");
+	    $(this).removeClass("active");
+	    $("#answer-check").addClass("active");  
+	})
+	  
+	      
+	   
 });
 </script>
 </body>
