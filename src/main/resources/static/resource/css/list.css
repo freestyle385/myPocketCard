@@ -146,4 +146,17 @@
   margin: 0 10px;
   color: #008000;
 }
+#hashtag > ul > .tag-item{
+  height: 25px;
+  text-align: center;
+  font-family: inherit;
+  font-size: 12px;
+  line-height: 25px;
+  padding: 0 5px;
+  border: solid 1px green;
+  border-radius: 4px;
+  box-shadow: 1px 1px 5px darkgray;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
 /* list 끝 */
