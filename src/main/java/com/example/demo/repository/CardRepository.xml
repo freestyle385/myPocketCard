@@ -29,7 +29,6 @@
 			`writerId`, 
 			`title`, 
 			`body`, 
-			`learningStatus`, 
 			`tagStatus`, 
 			`regDate`, 
 			`updateDate`
@@ -39,7 +38,6 @@
 			#{writerId}, 
 			#{title}, 
 			#{body}, 
-			#{learningStatus}, 
 			#{tagStatus}, 
 			NOW(), 
 			NOW()
