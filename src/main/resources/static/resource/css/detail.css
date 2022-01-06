@@ -42,6 +42,20 @@
   margin-right: 5px;
   margin-bottom: 5px;
 }
+#move-btn-wrap{
+  margin-top: 30px;
+  width: 100%;
+}
+.move-btn{
+  width: 100px;
+  height: 25px;
+  background-color: #008000;
+  color: white;
+  text-align: center;
+  border: solid 1px green;
+  border-radius: 4px;
+  box-shadow: 1px 1px 5px darkgray;
+}
 #card{
   width: 100%;
   margin-top: 20px;
@@ -136,7 +150,6 @@
   font-size: 1rem;
   overflow-y: scroll;
 }
-
 .btn-list{
   width: 100%;
 }

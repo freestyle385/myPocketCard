@@ -33,6 +33,11 @@
     </ul>
   </div>
   
+  <div id="move-btn-wrap" class="row">
+  	<a href="/usr/card/detail?cardId=${cardRd.getData().getId()-1}" id="prev-btn" class="move-btn cell"><< 이전 글</a>
+  	<a href="/usr/card/detail?cardId=${cardRd.getData().getId()+1}" id="next-btn" class="move-btn cell-r">다음 글 >></a>
+  </div>
+  
   <div id="card" class="row">
     <div id="card-info" class="cell">
       <div id="card-num"><span>${cardRd.getData().getId()}</span></div>

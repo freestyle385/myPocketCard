@@ -11,6 +11,7 @@
 
 <!-- css / js -->
 <link rel="stylesheet" type="text/css" href="/resource/css/write.css">
+<script src="resource/js/common.js"></script>
 
 </head>
 
@@ -29,7 +30,7 @@
     <!--  해시태그 목록   -->
     <ul id="tag-list" class="cell row"></ul>
   </div>
-  <span id="msg">*입력 후 엔터 또는 스페이스바를 누르면 적용됩니다</span>
+  <span id="msg">*입력 후 엔터를 누르면 적용됩니다</span>
   
   <form id="card" class="row" action="../../usr/card/doWrite" method="POST">
     <!-- 게시물 저장 시 함께 넘겨줄 tag값들을 위한 hidden input -->
@@ -57,15 +58,16 @@
 
 <script>
 $(document).ready(function () {
+	  // 해시태그 관련 변수
 	  var tag = {};
 	  var counter = 0;
-
+	
 	  // 입력한 값을 tag로 생성
 	  function addTag (value) {
 	    tag[counter] = value; // 태그를 Object 안에 추가
 	    counter++; // 태그 생성 시 같이 생성되는 del-btn의 id
 	  }
-
+	
 	  // tag값들을 배열로 저장
 	  function marginTag () {
 	    return Object.values(tag).filter(function (word) {
@@ -86,25 +88,23 @@ $(document).ready(function () {
 	  // 태그 추가 이벤트
 	  $("#tag").on("keyup", function (e) {
 	    var self = $(this);
-
+	
 	    // input에서 엔터를 눌렀을 때 실행
 	    if (e.key === "Enter") {
-
+	
 	      var tagValue = self.val().trim(); // 값 가져오기
 		
 	      // tagValue가 빈 칸이면 실행X
 	      if (tagValue == ""){
 	    	  alert("올바르지 않은 태그입니다.");
 	    	  return;
-	      }
-	      
-	      if (tagValue !== "") {
-
+	      } else {
+	
 	        // 같은 태그가 있는지 검사. 있다면 해당 값이 array로 return.
 	        var result = Object.values(tag).filter(function (word) {
 	          return word === tagValue;
 	        })
-
+	
 	        // 해시태그가 중복되었는지 확인
 	        if (result.length == 0) { 
 	          $("#tag-list").append("<li class='tag-item cell'>"+"#"+tagValue+"<span class='del-btn' idx='"+counter+"'> x</span></li>");
@@ -115,12 +115,11 @@ $(document).ready(function () {
 	          return;
 	        }
 	      } 
-	    	  
 	    
 	      e.preventDefault(); // 스페이스바로 빈 공간이 생기지 않도록 방지
 	    }
 	  });
-
+	
 	  // 태그 삭제 이벤트 
 	  // 인덱스 검사 후 삭제
 	  $(document).on("click", ".del-btn", function (e) {
