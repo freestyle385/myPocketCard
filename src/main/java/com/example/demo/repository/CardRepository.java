@@ -18,5 +18,7 @@ public interface CardRepository {
 	void doWriteCard(ForWriteCard card);
 
 	void setCardCondition(@Param("cardIdArr") ArrayList<Integer> cardIdArr,@Param("memberId") int memberId, @Param("learningStatus") Integer learningStatus);
+
+	void doModify(ForWriteCard card, @Param("cardId") int cardId);
 	
 }

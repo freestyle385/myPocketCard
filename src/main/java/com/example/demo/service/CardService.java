@@ -60,4 +60,9 @@ public class CardService {
 		return new ResultData<String>("S-1", "변경성공");
 	}
 
+	public void doModify(ForWriteCard card, int cardId) {
+		cardRepository.doModify(card, cardId);
+		
+	}
+
 }

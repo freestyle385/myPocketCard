@@ -60,5 +60,15 @@
 	<select id="getCardDetail" resultType="com.example.demo.vo.Card">
 		SELECT * FROM `questionCard` WHERE `id` = #{cardId} AND `writerId` = #{memberId}
 	</select>
+	
+	<update id="doModify" parameterType="com.example.demo.dto.ForWriteCard">
+		UPDATE questionCard
+		SET
+		`title` = #{card.title},
+		`body` = #{card.body},
+		`tagStatus` = #{card.tagStatus}
+		WHERE
+		`id` = #{cardId} AND `writerId` = #{card.writerId} 
+	</update>
 
 </mapper>
