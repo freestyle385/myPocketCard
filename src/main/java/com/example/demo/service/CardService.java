@@ -37,8 +37,11 @@ public class CardService {
 	}
 
 	public ResultData<Card> getCardDetail(int cardId, int memberId) {
+		
+		ArrayList<Integer> NextPrevCard = cardRepository.getNextPrev(cardId);
 		Card card = cardRepository.getCardDetail(cardId, memberId);
-		return new ResultData<Card>("S-1", cardId + "번 카드 입니다.", card);
+		
+		return new ResultData<Card>("S-1", cardId + "번 카드 입니다.", card, NextPrevCard);
 	}
 
 	public ResultData<String> doWriteCard(ForWriteCard card) {

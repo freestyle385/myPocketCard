@@ -47,9 +47,10 @@ public class CardController {
 	}
 	
 	@RequestMapping("/usr/card/detail")
+	@ResponseBody
 	public String getCardDetail(Model md, int cardId, int memberId) {
 		
-		//cardRd 정보 (결과 코드, 결과 메세지, 카드VO)
+		//cardRd 정보 (결과 코드, 결과 메세지, 카드VO, 이전 다음카드의 id 배열)
 		ResultData<Card> cardRd = cardService.getCardDetail(cardId, memberId);
 		md.addAttribute("cardRd", cardRd);
 		
@@ -80,7 +81,7 @@ public class CardController {
 	public String showModify(Model md, int cardId, int memberId) {
 		
 		ResultData<Card> cardRd = cardService.getCardDetail(cardId, memberId);
-		// 수절하려는 카드의 기존 상태
+		// 수정하려는 카드의 기존 상태
 		md.addAttribute("cardRd", cardRd);
 		
 		return "/usr/card/modify";

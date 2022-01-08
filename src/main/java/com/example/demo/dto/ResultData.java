@@ -7,7 +7,7 @@ public class ResultData<T> {
 	private String resultCode;
 	private String msg;
 	private T data;
-	private String extraData;
+	private Object extraData;
 	
 	public ResultData(String resultCode, String msg, T data) {
 		this.resultCode = resultCode;
@@ -15,7 +15,7 @@ public class ResultData<T> {
 		this.data = data;
 	}
 	
-	public ResultData(String resultCode, String msg, T data, String extraData) {
+	public ResultData(String resultCode, String msg, T data, Object extraData) {
 		this.resultCode = resultCode;
 		this.msg = msg;
 		this.data = data;
