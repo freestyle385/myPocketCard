@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.example.demo.Util.Util;
 import com.example.demo.dto.ForWriteCard;
 import com.example.demo.dto.ResultData;
 import com.example.demo.service.CardService;
@@ -64,5 +66,23 @@ public class CardController {
 	@RequestMapping("/usr/card/showWrite")
 	public String showWriteCard() {
 		return "/usr/card/write";
+	}
+	
+	@RequestMapping("/usr/card/doModify")
+	public String doModify(@ModelAttribute ForWriteCard card, int cardId) {
+		cardService.doModify(card, cardId);
+		
+		//카드 수정 후 수정된 카드의 detail 페이지로 이동
+		return String.format("/usr/card/detail?cardId=%d&memberId=%d", cardId, card.getWriterId());
+	}
+	
+	@RequestMapping("/usr/card/showModify")
+	public String showModify(Model md, int cardId, int memberId) {
+		
+		ResultData<Card> cardRd = cardService.getCardDetail(cardId, memberId);
+		// 수절하려는 카드의 기존 상태
+		md.addAttribute("cardRd", cardRd);
+		
+		return "/usr/card/modify";
 	}
 }

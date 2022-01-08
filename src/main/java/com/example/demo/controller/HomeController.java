@@ -8,6 +8,11 @@ public class HomeController {
 	
 	@RequestMapping("/")
 	public String Home() {
+		return "redirect:/usr/home/main";
+	}
+	
+	@RequestMapping("/usr/home/main")
+	public String HomeRedirect() {
 		return "/usr/home/main";
 	}
 }
