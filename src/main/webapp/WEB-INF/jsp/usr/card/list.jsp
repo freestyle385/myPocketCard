@@ -66,18 +66,15 @@
         <input type="checkbox" id="checkAll" class="chk"/>
       </div>
       <div id="checkbox-all-label" class="cell">
-        <label for="checkedAll">전체 선택</label>
+        <label for="checkAll">전체 선택</label>
       </div>
     </div>
-    <form id="card-list" action="/usr/card/setCardCondition" method="POST">
-      <!-- 체크박스의 value에 'id' 추가 -->
-      <!-- addString + card.id = id1, id2... -->
-	  <c:set var="addString" value="id"></c:set>
+    <div id="card-list">
    	  <c:forEach var="card" items="${listRd.getData()}">
    	  	<div id="card" class="row" >
 	        <div id="card-info" class="cell">
 	          <div id="card-num"><span>${card.id }</span></div>
-	          <div id="checkbox-one"><input type="checkbox" name="selected" class="chk" value="${addString }${card.id }"/></div>
+	          <div id="checkbox-one"><input type="checkbox" name="cardId" id="select-chk" class="chk" value="${card.id}"/></div>
 	        </div>
 	        <div id="card-body" class="cell">
 	          <div id="title"><span>Q.</span><a href="/usr/card/detail?cardId=${card.id}">${card.title }</a></div>
@@ -92,21 +89,42 @@
 	        </div>
       	</div>
    	  </c:forEach>
-    </form>
+    </div>
   </div>
   <!-- 리스트 페이징 -->
   <div id="list-paging"></div>
 </section>
 
-<!-- setter.jspf 불러오기 -->
-<%@ include file="../common/statusSetter.jspf"%>
+<!-- 카드 상태 설정 -->
+<section id="status-setter" class="cell-r">
+  <div class="side-bar-name"><h4>카드 상태 설정</h4></div>
+  <form action="/usr/card/setCardCondition" method="GET" class="setter-form">
+    <input type="hidden" value="" name="cardId" id="selected"/>
+    <div class="setter-box">
+      <div class="setter-name"><span>학습 상태 변경</span></div>
+      <div class="setter-select">
+        <select name="learningStatus">
+          <option disabled="disabled" selected>변경할 상태</option>
+          <option value="0">학습 필요</option>
+          <option value="1">학습 완료</option>
+        </select>
+      </div>
+    </div>
+    
+    <div class="btn"><input class="change-btn" type="button" value="저장"></div>
+  </form>
+</section>
 </article>
 
 <script>
 $(document).ready(function(){
 	// 컨트롤러에서 넘겨받은 카드 리스트의 길이  
 	var cardListLen = ${listRd.getData().size()};
-	  
+	
+	function putChkData(){
+		
+	}
+	
   	// 전체선택 버튼 클릭시 체크박스 전체 선택
     $("#checkAll").click(function(){
         if($("#checkAll").is(":checked")){
@@ -118,22 +136,30 @@ $(document).ready(function(){
   
    	// 전체 선택 중 한개의 체크박스 선택 해제 시 전체선택 체크박스 해제
     $(".chk").click(function(){
-        if($("input[name='selected']:checked").length == cardListLen){
+        if($("input[id='select-chk']:checked").length == cardListLen){
             $("#checkAll").prop("checked", true);
         }else{
             $("#checkAll").prop("checked", false);
         }
     });
  	
-   	// 상태 변경 버튼 클릭 시 card-list form 안의 체크박스 데이터도 제출됨
- 	$(".change-btn").click(function(){
+   	// 상태 변경 버튼 클릭 시 setter-form의 hidden input에 체크박스 데이터 삽입 후 제출
+ 	$(".change-btn").on("click", function (e) {
  		
-		if($("input[name=selected]:checked").length == 0){
+		if ($("input[id='select-chk']:checked").length == 0){
 			alert("카드를 선택하세요.");
 			return;
+		} else {
+			// checkedList에 체크박스 값을 넣어 #selected로 주입 
+			var checkedList = new Array();
+			$("input:checkbox[id='select-chk']:checked").each(function(){
+				checkedList.push(this.value);
+			});
+			
+			$("#selected").val(checkedList.toString());
+			
+			$(".setter-form").submit();
 		}
-		
-		$("#card-list").submit();
 	});  
 });
 </script>
