@@ -1,0 +1,190 @@
+/* card-wrap 시작 */
+#card-wrap{
+  width: 800px;
+  height: 1000px;
+  margin: auto;
+  padding: 10px;
+  padding-top: 40px;
+}
+#tag-wrap{
+  width: 100%;
+}
+#tag-input{
+  width: 140px;
+  height: 30px;
+  text-align: center;
+  font-family: inherit;
+  border: solid 1px green;
+  border-radius: 4px;
+  box-shadow: 1px 1px 5px darkgray;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+#tag{
+  width: 80%;
+  height: 100%;
+  outline: none;
+  border: none;
+  font-family: inherit;
+  text-align: center;
+  background-color: inherit;
+}
+#tag-list > .tag-item{
+  height: 30px;
+  text-align: center;
+  font-family: inherit;
+  font-size: 12px;
+  line-height: 30px;
+  padding: 0 5px;
+  border: solid 1px green;
+  border-radius: 4px;
+  box-shadow: 1px 1px 5px darkgray;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+#tag-list > .tag-item > .del-btn{
+  cursor: pointer;
+  color: #008000;
+}
+#tag-list > .tag-item > .del-btn:hover{
+  color: #960707;
+}
+#msg{
+  color: darkgray;
+  font-family: inherit;
+  font-size: 10px;
+}
+#card{
+  width: 100%;
+  margin-top: 20px;
+  background-color: #FAF4C0;
+  border-radius: 10px;
+  box-shadow: 1px 3px 10px darkgray;
+}
+#card-info{
+  width: 100%;
+  height: 30px;
+}
+#card-num{
+  width: 20%;
+  padding-left: 5px;
+}
+#card-num > span{
+  margin-right: 5px;
+  line-height: 30px;
+  color: #008000;
+}
+#setter-box{
+  width: 30%;
+}
+#setter-name{
+  width: 50%;
+  line-height: 30px;
+  text-align: center;
+  color: #008000;
+}
+#setter-select{
+  width: 50%;
+  text-align: center;
+}
+#setter-select > select{
+  width: 90%;
+  height: 30px;
+  text-align: center;
+  font-family: inherit;
+  border: solid 1px green;
+  border-radius: 4px;
+  box-shadow: 1px 1px 5px darkgray;
+}
+#card-body{
+  width: 100%;
+  height: calc(100% - 30px);
+}
+#question{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  padding: 1rem 0px;
+  height: 60px;
+}
+#question > span{
+  margin: 15px 10px;
+  color: #008000;
+}
+#question > textarea{
+  margin-top: 15px;
+  width: 90%;
+  height: 100%;
+  border: none;
+  resize: none;
+  background-color: inherit;
+  outline: none;
+  font-family: inherit;
+  font-size: 1rem;
+}
+#card-body > hr{
+  width: 98%;
+  margin: auto;
+}
+#answer{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  padding: 1rem 0px;
+}
+#answer > span{
+  margin: 20px 10px;
+  color: #008000;
+}
+#answer > textarea{
+  margin-top: 15px;
+  width: 90%;
+  height: 100%;
+  resize: none;
+  border: none;
+  background-color: inherit;
+  outline: none;
+  font-family: inherit;
+  font-size: 1rem;
+  overflow-y: scroll;
+}
+.btn-list{
+  width: 100%;
+}
+.btn{
+  width: 80px;
+  margin: 20px auto;
+}
+.back-btn{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-family: inherit;
+  background-color: #960707;
+  color: white;
+  border: solid 1px #BA2B2B;
+  border-radius: 4px;
+  box-shadow: 1px 1px 5px darkgray;
+  cursor: pointer;
+  width: 100%;
+  height: 30px;
+  font-size: 15px;
+}
+.submit-btn{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-family: inherit;
+  background-color: #008000;
+  color: white;
+  border: solid 1px green;
+  border-radius: 4px;
+  box-shadow: 1px 1px 5px darkgray;
+  cursor: pointer;
+  width: 100%;
+  height: 30px;
+  font-size: 15px;
+}
+/* card-wrap 끝 */

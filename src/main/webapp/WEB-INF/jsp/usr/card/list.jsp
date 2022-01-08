@@ -98,7 +98,7 @@
 <!-- 카드 상태 설정 -->
 <section id="status-setter" class="cell-r">
   <div class="side-bar-name"><h4>카드 상태 설정</h4></div>
-  <form action="/usr/card/setCardCondition" method="GET" class="setter-form">
+  <form action="/usr/card/setCardCondition" method="POST" class="setter-form">
     <input type="hidden" value="" name="cardId" id="selected"/>
     <div class="setter-box">
       <div class="setter-name"><span>학습 상태 변경</span></div>
@@ -120,10 +120,6 @@
 $(document).ready(function(){
 	// 컨트롤러에서 넘겨받은 카드 리스트의 길이  
 	var cardListLen = ${listRd.getData().size()};
-	
-	function putChkData(){
-		
-	}
 	
   	// 전체선택 버튼 클릭시 체크박스 전체 선택
     $("#checkAll").click(function(){

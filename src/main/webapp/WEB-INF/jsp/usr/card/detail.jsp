@@ -57,10 +57,10 @@
   
    <div class="btn-list row">
       <div class="del-wrap cell">
-        <a class="card-del-btn" onclick="if (confirm('카드를 삭제하시겠습니까?') == false) {return false};" href="/usr/card/delete?cardId=${cardRd.getData().getId()}">삭제</a>
+        <a class="card-del-btn" onclick="if (confirm('카드를 삭제하시겠습니까?') == false) {return false};" href="/usr/card/doDelete?cardId=${cardRd.getData().getId()}">삭제</a>
       </div>
       <div class="modify-wrap cell-r">
-        <a class="modify-btn" href="/usr/card/modify?cardId=${cardRd.getData().getId()}">수정</a>
+        <a class="modify-btn" href="/usr/card/showModify?cardId=${cardRd.getData().getId()}">수정</a>
       </div>
     </div>
 </section>
