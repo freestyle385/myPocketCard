@@ -39,7 +39,7 @@
   </div>
   <span id="msg">*입력 후 엔터를 누르면 적용됩니다</span>
   
-  <form id="card" class="row" action="../../usr/card/doModify?cardId=${cardRd.getData().getId()}" method="GET">
+  <form id="card" class="row" action="../../usr/card/doModify?cardId=${cardRd.getData().getId()}" method="POST">
     <!-- 게시물 저장 시 함께 넘겨줄 tag값들을 위한 hidden input -->
     <input type="hidden" value="" name="tagStatus" id="rdTag"/>
     
@@ -49,7 +49,7 @@
         <div id="setter-name" class="cell"><span>학습 상태</span></div>
         <div id="setter-select" class="cell">
           <select name="learningStatus">
-            <option value="${cardRd.getData().getLearningStatus()}" selected>
+            <option value="${cardRd.getData().getLearningStatus()}" disabled>
 	            <c:choose>
 		            <c:when test="${cardRd.getData().getLearningStatus() == 0}">학습 필요</c:when>
 		            <c:when test="${cardRd.getData().getLearningStatus() == 1}">학습 완료</c:when>

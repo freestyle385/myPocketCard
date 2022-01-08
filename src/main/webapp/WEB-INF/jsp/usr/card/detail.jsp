@@ -39,9 +39,16 @@
   </div>
   
   <div id="card" class="row">
-    <div id="card-info" class="cell">
-      <div id="card-num"><span>${cardRd.getData().getId()}</span></div>
+    <div id="card-info" class="row cell">
+      <div id="card-num" class="cell"><span>No.</span>${cardRd.getData().getId()}</div>
+      <div id="learningStatus" class="cell-r">
+      	<c:choose>
+	        <c:when test="${cardRd.getData().getLearningStatus() == 0}">학습 필요 상태입니다!</c:when>
+	        <c:when test="${cardRd.getData().getLearningStatus() == 1}">학습 완료 상태입니다!</c:when>
+        </c:choose>
+      </div>
     </div>
+    <div id="msg-box" class="cell-r"><span id="msg">*수정페이지에서 상태변경이 가능합니다</span></div>
     <div id="card-body" class="cell">
       <div id="question"><span>Q.</span>${cardRd.getData().getTitle()}</div>
       <hr>
