@@ -79,7 +79,7 @@ public class CardService {
 		String allHashTagStr = cardRepository.getAllHashTag(memberId);
 		
 		// 태그 중복제거 set
-		SortedSet<String> allHashTag = new TreeSet<>(Arrays.asList(allHashTagStr.split(", ")));
+		SortedSet<String> allHashTag = new TreeSet<>(Arrays.asList(allHashTagStr.split(",")));
 		
 		return allHashTag;
 	}
