@@ -1,6 +1,12 @@
 package com.example.demo.service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
+
 import org.springframework.stereotype.Service;
 import com.example.demo.Util.Util;
 import com.example.demo.dto.ForWriteCard;
@@ -67,5 +73,14 @@ public class CardService {
 		cardRepository.doModify(card, cardId);
 		
 	}
-
+	
+	public SortedSet<String> getAllHashTag(int memberId){
+		
+		String allHashTagStr = cardRepository.getAllHashTag(memberId);
+		
+		// 태그 중복제거 set
+		SortedSet<String> allHashTag = new TreeSet<>(Arrays.asList(allHashTagStr.split(", ")));
+		
+		return allHashTag;
+	}
 }

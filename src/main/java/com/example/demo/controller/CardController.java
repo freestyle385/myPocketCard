@@ -34,7 +34,9 @@ public class CardController {
 		
 		//listRd info (결과 코드, 데이터 정보, 카드리스트, 전체카드의 수(Int))
 		ResultData<ArrayList<Card>> listRd = cardService.getCardList(memberId, hashTag, learningStatus, searchKeyword, curPage);
+		
 		md.addAttribute("listRd", listRd);
+		md.addAttribute("allHashTag", cardService.getAllHashTag(memberId));
 		
 		return "/usr/card/list";
 	}

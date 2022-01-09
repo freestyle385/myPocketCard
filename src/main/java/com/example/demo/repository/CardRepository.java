@@ -22,5 +22,7 @@ public interface CardRepository {
 	void doModify(ForWriteCard card, @Param("cardId") int cardId);
 
 	ArrayList<Integer> getNextPrev(@Param("cardId") int cardId);
+
+	String getAllHashTag(int memberId);
 	
 }
