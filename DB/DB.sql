@@ -6,6 +6,8 @@ CREATE TABLE `member`
 (
 	`id` INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	`infoOrigin` VARCHAR(30) NOT NULL,
+	`userEmail` VARCHAR(50) NOT NULL,
+	`userName` VARCHAR(10) NOT NULL,
 	`regDate` DATETIME NOT NULL DEFAULT NOW(),
 	`delStatus` TINYINT(1) DEFAULT 0 COMMENT '0=가입, 1=탈퇴',
 	`delDate` DATETIME
@@ -17,7 +19,6 @@ CREATE TABLE `questionCard`
 	`writerId` INT(10) UNSIGNED NOT NULL,
 	`title` VARCHAR(50) NOT NULL,
 	`body` TEXT NOT NULL,
-	`learningStatus` TINYINT(1) NOT NULL DEFAULT 0 COMMENT '0=학습전, 1=학습완료',
 	`tagStatus` VARCHAR(200),
 	`regDate` DATETIME NOT NULL DEFAULT NOW(),
 	`updateDate` DATETIME NOT NULL DEFAULT NOW()
