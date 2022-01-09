@@ -32,10 +32,12 @@
         <div class="filter-name"><span>해시 태그 필터</span></div>
         <div class="filter-select">
           <select name="tagStatus">
-	            <option value="" selected>전체 선택</option>
-            <c:forEach var="hashTag" items="${allHashTag}">
-	            <option value="${hashTag}">${hashTag}</option>
-            </c:forEach>
+	        <option value="" selected>전체 선택</option>
+            <c:if test="${allHashTag != null}">
+            	<c:forEach var="hashTag" items="${allHashTag}">
+	            	<option value="${hashTag}">${hashTag}</option>
+            	</c:forEach>
+            </c:if>
           </select>
         </div>
       </div>
@@ -81,9 +83,11 @@
 	          <hr>
 	          <div id="hashtag"><span>#.</span>
 	          	<ul>
-	          		<c:forEach var="tagValue" items="${fn:split(card.tagStatus, ',')}">
-    					<li class="tag-item cell">#${tagValue}</li>
-    				</c:forEach>
+	          	<c:if test="${card.tagStatus.length() > 0}">
+		        <c:forEach var="tagValue" items="${fn:split(card.tagStatus, ',')}">
+	    			<li class="tag-item cell">#${tagValue}</li>
+	    		</c:forEach>
+	  			</c:if>
 	          	</ul>
 	          </div>
 	        </div>

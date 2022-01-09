@@ -49,7 +49,6 @@ public class CardController {
 	}
 	
 	@RequestMapping("/usr/card/detail")
-	@ResponseBody
 	public String getCardDetail(Model md, int cardId, int memberId) {
 		
 		//cardRd 정보 (결과 코드, 결과 메세지, 카드VO, 이전 다음카드의 id 배열)

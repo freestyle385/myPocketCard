@@ -81,7 +81,7 @@
 	</select>
 	
 	<select id="getAllHashTag" resultType="String">
-		SELECT GROUP_CONCAT(`tagStatus` SEPARATOR ', ') 
+		SELECT GROUP_CONCAT(`tagStatus` SEPARATOR ',') 
 		FROM `questionCard`
 		WHERE `writerId` = #{memberId};
 	</select>

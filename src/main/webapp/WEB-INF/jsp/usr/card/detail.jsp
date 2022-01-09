@@ -26,10 +26,12 @@
   <div id="tag-wrap" class="row">
     <!--  해시태그 목록   -->
     <ul id="tag-list" class="cell row">
-    	<!-- jstl fn을 활용해 태그 문자열 split -->
-    	<c:forEach var="tagValue" items="${fn:split(cardRd.getData().getTagStatus(), ',')}">
-    		<li class="tag-item cell">#${tagValue}</li>
-    	</c:forEach>
+    	<c:if test="${cardRd.getData().getTagStatus().length() > 0}">
+	    	<!-- jstl fn을 활용해 태그 문자열 split -->
+	    	<c:forEach var="tagValue" items="${fn:split(cardRd.getData().getTagStatus(), ',')}">
+	    		<li class="tag-item cell">#${tagValue}</li>
+	    	</c:forEach>
+    	</c:if>
     </ul>
   </div>
   
