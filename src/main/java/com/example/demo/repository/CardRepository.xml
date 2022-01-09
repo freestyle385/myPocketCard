@@ -70,5 +70,19 @@
 		WHERE
 		`id` = #{cardId} AND `writerId` = #{card.writerId} 
 	</update>
-
+	
+	<select id="getNextPrev" resultType="Integer">
+		SELECT `id` FROM `questionCard`
+		WHERE 
+		( 
+			`id` = IFNULL((SELECT MIN(`id`) FROM `questionCard` WHERE `id` <![CDATA[ > ]]> ${cardId}),0) 
+			OR  `id` = IFNULL((SELECT MAX(`id`) FROM `questionCard` WHERE `id` <![CDATA[ < ]]> ${cardId}),0)
+		)
+	</select>
+	
+	<select id="getAllHashTag" resultType="String">
+		SELECT GROUP_CONCAT(`tagStatus` SEPARATOR ', ') 
+		FROM `questionCard`
+		WHERE `writerId` = #{memberId};
+	</select>
 </mapper>

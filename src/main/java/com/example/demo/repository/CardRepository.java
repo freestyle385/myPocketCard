@@ -20,5 +20,9 @@ public interface CardRepository {
 	void setCardCondition(@Param("cardIdArr") ArrayList<Integer> cardIdArr,@Param("memberId") int memberId, @Param("learningStatus") Integer learningStatus);
 
 	void doModify(ForWriteCard card, @Param("cardId") int cardId);
+
+	ArrayList<Integer> getNextPrev(@Param("cardId") int cardId);
+
+	String getAllHashTag(int memberId);
 	
 }

@@ -34,7 +34,9 @@ public class CardController {
 		
 		//listRd info (결과 코드, 데이터 정보, 카드리스트, 전체카드의 수(Int))
 		ResultData<ArrayList<Card>> listRd = cardService.getCardList(memberId, hashTag, learningStatus, searchKeyword, curPage);
+		
 		md.addAttribute("listRd", listRd);
+		md.addAttribute("allHashTag", cardService.getAllHashTag(memberId));
 		
 		return "/usr/card/list";
 	}
@@ -47,9 +49,10 @@ public class CardController {
 	}
 	
 	@RequestMapping("/usr/card/detail")
+	@ResponseBody
 	public String getCardDetail(Model md, int cardId, int memberId) {
 		
-		//cardRd 정보 (결과 코드, 결과 메세지, 카드VO)
+		//cardRd 정보 (결과 코드, 결과 메세지, 카드VO, 이전 다음카드의 id 배열)
 		ResultData<Card> cardRd = cardService.getCardDetail(cardId, memberId);
 		md.addAttribute("cardRd", cardRd);
 		
@@ -80,7 +83,7 @@ public class CardController {
 	public String showModify(Model md, int cardId, int memberId) {
 		
 		ResultData<Card> cardRd = cardService.getCardDetail(cardId, memberId);
-		// 수절하려는 카드의 기존 상태
+		// 수정하려는 카드의 기존 상태
 		md.addAttribute("cardRd", cardRd);
 		
 		return "/usr/card/modify";
