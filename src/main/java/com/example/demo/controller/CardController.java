@@ -36,7 +36,10 @@ public class CardController {
 		ResultData<ArrayList<Card>> listRd = cardService.getCardList(memberId, hashTag, learningStatus, searchKeyword, curPage);
 		
 		md.addAttribute("listRd", listRd);
+		cardService.getAllHashTag(memberId);
 		md.addAttribute("allHashTag", cardService.getAllHashTag(memberId));
+		
+		
 		
 		return "/usr/card/list";
 	}
