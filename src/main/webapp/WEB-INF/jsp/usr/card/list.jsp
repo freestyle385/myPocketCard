@@ -32,10 +32,10 @@
         <div class="filter-name"><span>해시 태그 필터</span></div>
         <div class="filter-select">
           <select name="tagStatus">
-          <!-- 나중에 DB로부터 select option 목록 불러오기 구현 필요 -->
-            <option value="-1" selected>전체 선택</option>
-            <option value="0">학습 필요</option>
-            <option value="1">학습 완료</option>
+	            <option value="" selected>전체 선택</option>
+            <c:forEach var="hashTag" items="${allHashTag}">
+	            <option value="${hashTag}">${hashTag}</option>
+            </c:forEach>
           </select>
         </div>
       </div>
