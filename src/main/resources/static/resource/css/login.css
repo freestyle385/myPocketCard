@@ -1,0 +1,55 @@
+/* login-wrap 시작 */
+#login-wrap{
+  width: 800px;
+  margin: auto;
+  padding: 10px;
+  padding-top: 40px;
+}
+#login-msg{
+  margin: 30px auto;
+  text-align: center;
+  padding: 10px;
+}
+#login-menu{
+  width: 100%;
+}
+#google-login-btn{
+  width: 50%;
+  height: 50px;
+  margin: 50px auto;
+  display: block;
+  text-align: center;
+  background-color: #5AAEFF;
+  box-shadow: 1px 1px 5px darkgray;
+  cursor: pointer;
+}
+#google-login-btn > a > img{
+  width: 32px;
+  padding: 9px 15px;
+  background-color: #ffffff;
+}
+#google-login-btn > a > span{
+  line-height: 50px;
+  color: white;
+}
+#github-login-btn{
+  width: 50%;
+  height: 50px;
+  margin: 50px auto;
+  display: block;
+  text-align: center;
+  background-color: #363636;
+  box-shadow: 1px 1px 5px darkgray;
+  cursor: pointer;
+}
+#github-login-btn > a > img{
+  width: 32px;
+  padding: 9px 15px;
+  background-color: #ffffff;
+}
+#github-login-btn > a > span{
+  line-height: 50px;
+  color: white;
+}
+
+/* login-wrap 끝 */
