@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+	namespace="com.example.demo.repository.MemberRepository">
+	
+	<insert id="doJoin">
+		INSERT INTO `member` 
+		(
+		`infoOrigin`,
+		`userEmail`,
+		`userName`
+		) 
+		SELECT 
+		${infoOrigin},
+		${userEmail},
+		${userName}
+		FROM DUAL
+		<!-- 이미 존재하는 회원인지 확인 -->
+		WHERE NOT EXISTS (SELECT * FROM `member` WHERE `infoOrigin` = ${infoOrigin} AND `userEmail` = ${userEmail} AND `userName` = ${userName}) 
+	</insert>
+	
+</mapper>
