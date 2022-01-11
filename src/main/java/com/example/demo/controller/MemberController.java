@@ -21,7 +21,7 @@ public class MemberController {
 	public MemberController(MemberService memberService) {
 		this.memberService = memberService;
 	}
-	
+
 	@RequestMapping("/usr/member/showLogin")
 	public String showLogin() {
 		return "/usr/member/login";
@@ -50,6 +50,6 @@ public class MemberController {
 		
 		ResultData<String> joinRd = memberService.doJoin("kakao", userEmail, userNickname);
 		
-		return "/usr/home/main";
+		return "/usr/member/login";
 	}
 }

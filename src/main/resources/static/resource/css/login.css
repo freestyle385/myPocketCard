@@ -1,0 +1,20 @@
+/* login-wrap 시작 */
+#login-wrap{
+  width: 800px;
+  margin: auto;
+  padding: 10px;
+  padding-top: 40px;
+}
+#login-msg{
+  margin: 30px auto;
+  text-align: center;
+  padding: 10px;
+}
+#kakao-login-btn{
+  text-align: center;
+}
+#kakao-login-btn > a{
+  display: inline-block;
+  margin: 0 auto;
+}
+/* login-wrap 끝 */

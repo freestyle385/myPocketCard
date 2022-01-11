@@ -11,7 +11,6 @@
 
 <!-- css / js -->
 <link rel="stylesheet" type="text/css" href="/resource/css/write.css">
-<script src="resource/js/common.js"></script>
 
 </head>
 

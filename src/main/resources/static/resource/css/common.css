@@ -103,6 +103,10 @@ body{
 #nav-bar > .menu > a{
   display: block;
 }
+#my-page{
+  display: block;
+  cursor: pointer;
+}
 /* top-bar 끝 */
 /* article 시작 */
 article{
