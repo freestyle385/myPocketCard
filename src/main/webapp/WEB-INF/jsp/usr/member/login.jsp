@@ -5,8 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<<<<<<< HEAD
 <!-- OAuth2.0 클라이언트ID -->
 <meta name ="google-signin-client_id" content="27159324347-72k26vcohvo86prrvroetf0ip16laiqk.apps.googleusercontent.com">
+=======
+>>>>>>> develop
 
 <title>포켓 카드 노트</title>
 <!-- header.jspf 불러오기 -->
@@ -25,22 +28,23 @@
 <!-- login-wrap -->
 <section id="login-wrap" class="cell">
   <div id="login-msg">
-    <span>Google 또는 Github로 편하게 로그인하세요!</span>
+    <span>카카오 계정으로 편하게 로그인하세요!</span>
   </div>
-  <ul id="login-menu">
-    <li id="google-login-btn" class="login-box">
-      <a href="javascript:void(0)" class="row">
-        <img class="cell" src="/resource/img/google_logo.png">
-        <span>Google 계정으로 로그인하기</span>
-      </a>
-    </li>
-    <li id="github-login-btn" class="login-box">
-      <a href="javascript:void(0)" class="row">
-        <img class="cell" src="/resource/img/github_logo.png">
-        <span>Github 계정으로 로그인하기</span>
-      </a>
-    </li>
-  </ul>
+  <c:if test="${userId==null}">
+  <div id="kakao-login-btn">
+    <a href="https://kauth.kakao.com/oauth/authorize?client_id=477d92a75a81ced855b4f349c5380bf4&redirect_uri=http://localhost:8081/usr/member/doLogin&response_type=code" class="row">
+      <img class="cell" src="/resource/img/kakao_login_btn.png">
+    </a>
+  </div>
+  </c:if>
+  <c:if test="${userId!=null}">
+  <div id="kakao-logout-btn" class="login-box">
+    <form name="logout" action="/usr/member/doLogout">
+	  <input type="submit" value="로그아웃">
+    </form>
+  </div>
+  </c:if>
+>>>>>>> develop
 </section>  
 
 <!-- empty wrap -->

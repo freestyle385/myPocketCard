@@ -10,46 +10,11 @@
   text-align: center;
   padding: 10px;
 }
-#login-menu{
-  width: 100%;
-}
-#google-login-btn{
-  width: 50%;
-  height: 50px;
-  margin: 50px auto;
-  display: block;
+#kakao-login-btn{
   text-align: center;
-  background-color: #5AAEFF;
-  box-shadow: 1px 1px 5px darkgray;
-  cursor: pointer;
 }
-#google-login-btn > a > img{
-  width: 32px;
-  padding: 9px 15px;
-  background-color: #ffffff;
+#kakao-login-btn > a{
+  display: inline-block;
+  margin: 0 auto;
 }
-#google-login-btn > a > span{
-  line-height: 50px;
-  color: white;
-}
-#github-login-btn{
-  width: 50%;
-  height: 50px;
-  margin: 50px auto;
-  display: block;
-  text-align: center;
-  background-color: #363636;
-  box-shadow: 1px 1px 5px darkgray;
-  cursor: pointer;
-}
-#github-login-btn > a > img{
-  width: 32px;
-  padding: 9px 15px;
-  background-color: #ffffff;
-}
-#github-login-btn > a > span{
-  line-height: 50px;
-  color: white;
-}
-
 /* login-wrap 끝 */
