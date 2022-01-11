@@ -9,15 +9,19 @@
 		(
 		`infoOrigin`,
 		`userEmail`,
-		`userName`
+		`userNickname`
 		) 
 		SELECT 
 		'${infoOrigin}',
 		'${userEmail}',
-		'${userName}'
+		'${userNickname}'
 		FROM DUAL
 		<!-- 이미 존재하는 회원인지 확인 -->
-		WHERE NOT EXISTS (SELECT * FROM `member` WHERE `infoOrigin` = '${infoOrigin}' AND `userEmail` = '${userEmail}' AND `userName` = '${userName}') 
+		WHERE NOT EXISTS (SELECT * FROM `member` WHERE `infoOrigin` = '${infoOrigin}' AND `userEmail` = '${userEmail}' AND `userNickname` = '${userNickname}') 
 	</insert>
+	
+	<select id="getMember" resultType="com.example.demo.vo.Member">
+		SELECT * FROM `member` WHERE `userEmail` = #{userEmail} AND `userNickname` = #{userNickname}
+	</select>
 	
 </mapper>

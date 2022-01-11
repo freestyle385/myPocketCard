@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.demo.Util.KakaoAPI;
 import com.example.demo.dto.ResultData;
 import com.example.demo.service.MemberService;
+import com.example.demo.vo.Member;
 
 @Controller
 public class MemberController {
@@ -36,20 +38,29 @@ public class MemberController {
 		// 2번 인증코드로 토큰 전달
 		HashMap<String, Object> userInfo = KakaoAPI.getUserInfo(accessToken);
 		
-		String userEmail = null;
-		String userNickname = null;
 		
-		if(userInfo.get("email") != null) {
-			userEmail = (String) userInfo.get("email");
-			userNickname = (String) userInfo.get("nickname");
-			
-			session.setAttribute("userId", userEmail);
+		String userEmail = (String) userInfo.get("email");
+		String userNickname = (String) userInfo.get("nickname");
+		
+		memberService.doJoin("kakao", userEmail, userNickname);
+		Member loginedMember = memberService.getMember(userEmail, userNickname);
+		
+		if(userInfo.size() > 0) {
 			session.setAttribute("accessToken", accessToken);
-			session.setAttribute("userNickname", userNickname);
+			session.setAttribute("loginedMember", loginedMember);
 		}
 		
-		ResultData<String> joinRd = memberService.doJoin("kakao", userEmail, userNickname);
+		return "/usr/home/main";
+	}
+	
+	@RequestMapping("/usr/member/doLogout")
+	public String doLogout(HttpSession session) {
 		
-		return "/usr/member/login";
+		String accessToken = (String) session.getAttribute("accessToken");
+		KakaoAPI.kakaoLogout(accessToken);
+		session.removeAttribute("loginedMember");
+		session.removeAttribute("accessToken");
+		
+		return "/usr/home/main";
 	}
 }

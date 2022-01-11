@@ -5,12 +5,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<<<<<<< HEAD
-<!-- OAuth2.0 클라이언트ID -->
-<meta name ="google-signin-client_id" content="27159324347-72k26vcohvo86prrvroetf0ip16laiqk.apps.googleusercontent.com">
-=======
->>>>>>> develop
-
 <title>포켓 카드 노트</title>
 <!-- header.jspf 불러오기 -->
 <%@ include file="../common/header.jspf"%>
@@ -44,7 +38,6 @@
     </form>
   </div>
   </c:if>
->>>>>>> develop
 </section>  
 
 <!-- empty wrap -->
