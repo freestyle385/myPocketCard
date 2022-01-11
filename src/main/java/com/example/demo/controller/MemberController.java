@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.Util.KakaoAPI;
@@ -34,8 +35,6 @@ public class MemberController {
 		String accessToken = KakaoAPI.getAccessToken(code);
 		// 2번 인증코드로 토큰 전달
 		HashMap<String, Object> userInfo = KakaoAPI.getUserInfo(accessToken);
-		
-		System.out.println("login info : " + userInfo.toString());
 		
 		String userEmail = null;
 		String userNickname = null;
