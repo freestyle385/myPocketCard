@@ -14,8 +14,14 @@ public class MemberController {
 		this.memberService = memberService;
 	}
 	
-	@RequestMapping("/usr/member/doJoin")
-	public String doJoin(String infoOrigin, String userEmail, String userName) {
+	@RequestMapping("/usr/member/showLogin")
+	public String showLogin() {
+		return "/usr/member/login";
+	}
+	
+	
+	@RequestMapping("/usr/member/doLogin")
+	public String doLogin(String infoOrigin, String userEmail, String userName) {
 		
 		ResultData<String> joinRd = memberService.doJoin(infoOrigin, userEmail, userName);
 		
