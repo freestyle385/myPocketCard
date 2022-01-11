@@ -20,7 +20,7 @@
   	<section id="top-bar-wrap">
 	  <div id="first-top-bar" class="row">
 	    <div id="logo-box" class="cell"><h3><a href="/usr/home/main">포켓 카드 노트</a></h3></div>
-	    <div id="login-status" class="cell-r"><h4><a href="/usr/member/login">로그인</a></h4></div>
+	    <div id="login-status" class="cell-r"><h4><a href="/usr/member/showLogin">로그인</a></h4></div>
 	  </div>
 	  <div id="second-top-bar">
 	    <ul id="nav-bar" class=" row">

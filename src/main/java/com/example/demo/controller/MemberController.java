@@ -14,11 +14,11 @@ public class MemberController {
 		this.memberService = memberService;
 	}
 	
-	@RequestMapping("/usr/member/doJoin")
+	@RequestMapping("/usr/member/doLogin")
 	public String doJoin(String infoOrigin, String userEmail, String userName) {
 		
 		ResultData<String> joinRd = memberService.doJoin(infoOrigin, userEmail, userName);
 		
-		return "/usr/home/main";
+		return "/usr/member/login";
 	}
 }

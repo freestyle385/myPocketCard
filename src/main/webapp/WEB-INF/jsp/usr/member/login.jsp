@@ -5,6 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<!-- OAuth2.0 클라이언트ID -->
+<meta name ="google-signin-client_id" content="27159324347-72k26vcohvo86prrvroetf0ip16laiqk.apps.googleusercontent.com">
+
 <title>포켓 카드 노트</title>
 <!-- header.jspf 불러오기 -->
 <%@ include file="../common/header.jspf"%>
@@ -26,13 +29,13 @@
   </div>
   <ul id="login-menu">
     <li id="google-login-btn" class="login-box">
-      <a href="" class="row">
+      <a href="javascript:void(0)" class="row">
         <img class="cell" src="/resource/img/google_logo.png">
         <span>Google 계정으로 로그인하기</span>
       </a>
     </li>
     <li id="github-login-btn" class="login-box">
-      <a href="" class="row">
+      <a href="javascript:void(0)" class="row">
         <img class="cell" src="/resource/img/github_logo.png">
         <span>Github 계정으로 로그인하기</span>
       </a>
@@ -44,10 +47,6 @@
 <section class="empty-wrap cell"></section>
 </article>
 
-<script>
-$(document).ready(function () {
-	 
-});
-</script>
+
 </body>
 </html>
