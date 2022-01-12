@@ -76,7 +76,12 @@ public class CardController {
 	@ResponseBody
 	public String doWriteCard(@ModelAttribute ForWriteCard card){
 		
+		card.setWriterId(ls.getLoginedMember().getId());
 		ResultData<Integer> writeRd = cardService.doWriteCard(card);
+		
+		if(writeRd.isFail()) {
+			return Util.jsHistoryBack(writeRd.getMsg());
+		}
 		
 		return Util.jsReplace("", String.format("/usr/card/detail?cardId=%d", writeRd.getData()));
 	}

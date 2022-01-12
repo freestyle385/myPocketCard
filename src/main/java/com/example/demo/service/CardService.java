@@ -59,8 +59,8 @@ public class CardService {
 			return new ResultData<Integer>("F-1", "입력되지 않은 값이 있습니다.", nullField.size(), String.join(",", nullField));
 		}
 		
-		Integer lastInsertId = cardRepository.getLastInsertId();
 		cardRepository.doWriteCard(card);
+		Integer lastInsertId = cardRepository.getLastInsertId();
 		
 		return new ResultData<Integer>("S-1", "카드 생성 완료", lastInsertId);
 	}

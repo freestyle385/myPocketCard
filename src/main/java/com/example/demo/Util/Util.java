@@ -3,8 +3,6 @@ package com.example.demo.Util;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
-import com.sbs.exam.demo.util.Utility;
-
 public class Util {
 	public static boolean emptyChk(Object obj) {
 		
@@ -59,5 +57,26 @@ public class Util {
 				""";
 		
 		return String.format(script, msg, uri);
+	}
+	
+	public static String jsHistoryBack(String msg) {
+		
+		if(msg == null) {
+			msg = "";
+		}
+		
+		String script = """
+				<script>
+					const msg = '%s'.trim();
+					
+					if(msg.length > 0){
+						alert(msg);
+					}
+					
+					history.back();
+				</script>
+				""";
+		
+		return String.format(script, msg);
 	}
 }
