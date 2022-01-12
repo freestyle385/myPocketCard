@@ -24,5 +24,7 @@ public interface CardRepository {
 	ArrayList<Integer> getNextPrev(@Param("cardId") int cardId);
 
 	String getAllHashTag(int memberId);
+
+	Integer getLastInsertId();
 	
 }

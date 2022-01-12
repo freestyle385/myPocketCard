@@ -50,13 +50,19 @@ public class CardService {
 		return new ResultData<Card>("S-1", cardId + "번 카드 입니다.", card, NextPrevCard);
 	}
 
-	public ResultData<String> doWriteCard(ForWriteCard card) {
+	public ResultData<Integer> doWriteCard(ForWriteCard card) {
+		
 		ArrayList<String> nullField = Util.fieldChk(card);
+		
 		if(nullField.size() > 0) {
-			return new ResultData<String>("F-1", "입력되지 않은 값이 있습니다.", String.join(",", nullField));
+			// 입력되지 않은 값 배열
+			return new ResultData<Integer>("F-1", "입력되지 않은 값이 있습니다.", nullField.size(), String.join(",", nullField));
 		}
+		
+		Integer lastInsertId = cardRepository.getLastInsertId();
 		cardRepository.doWriteCard(card);
-		return new ResultData<String>("S-1", "카드 생성 완료");
+		
+		return new ResultData<Integer>("S-1", "카드 생성 완료", lastInsertId);
 	}
 
 	public ResultData<String> setCardCondition(String cardId, int memberId, Integer learningStatus) {

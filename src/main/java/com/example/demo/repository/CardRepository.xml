@@ -85,4 +85,9 @@
 		FROM `questionCard`
 		WHERE `writerId` = #{memberId};
 	</select>
+	
+	<select id="getLastInsertId" resultType="Integer">
+		SELECT LAST_INSERT_ID()
+	</select>
+	
 </mapper>

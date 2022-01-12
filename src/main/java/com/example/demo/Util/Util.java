@@ -3,6 +3,8 @@ package com.example.demo.Util;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
+import com.sbs.exam.demo.util.Utility;
+
 public class Util {
 	public static boolean emptyChk(Object obj) {
 		
@@ -36,5 +38,26 @@ public class Util {
 		}
 		
 		return nullField;
+	}
+	
+	public static String jsReplace(String msg, String uri) {
+		
+		if(msg == null) {
+			msg = "";
+		}
+		
+		String script = """
+				<script>
+					const msg = '%s'.trim();
+					
+					if(msg.length > 0){
+						alert(msg);
+					}
+					
+					location.replace('%s');
+				</script>
+				""";
+		
+		return String.format(script, msg, uri);
 	}
 }

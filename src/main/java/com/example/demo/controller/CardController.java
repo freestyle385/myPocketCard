@@ -35,8 +35,7 @@ public class CardController {
 			@RequestParam(defaultValue = "1") int curPage,
 			Model md) {
 		
-		Member loginedMember = ls.getLoginedMember();
-		int loginedMemberId = loginedMember.getId();
+		int loginedMemberId = ls.getLoginedMember().getId();
 		
 		//listRd info (결과 코드, 데이터 정보, 카드리스트, 전체카드의 수(Int))
 		ResultData<ArrayList<Card>> listRd = cardService.getCardList(loginedMemberId, hashTag, learningStatus, searchKeyword, curPage);
@@ -52,16 +51,22 @@ public class CardController {
 	
 	@RequestMapping("/usr/card/setCardCondition")
 	@ResponseBody
-	public String setCardCondition(String cardId, int memberId, Integer learningStatus) {
-		ResultData<String> setRd = cardService.setCardCondition(cardId, memberId, learningStatus);
+	public String setCardCondition(String cardId, Integer learningStatus) {
+		
+		int loginedMemberId = ls.getLoginedMember().getId();
+		
+		ResultData<String> setRd = cardService.setCardCondition(cardId, loginedMemberId, learningStatus);
+		
 		return setRd.getMsg();
 	}
 	
 	@RequestMapping("/usr/card/detail")
-	public String getCardDetail(Model md, int cardId, int memberId) {
+	public String getCardDetail(Model md, int cardId) {
+		
+		int loginedMemberId = ls.getLoginedMember().getId();
 		
 		//cardRd 정보 (결과 코드, 결과 메세지, 카드VO, 이전 다음카드의 id 배열)
-		ResultData<Card> cardRd = cardService.getCardDetail(cardId, memberId);
+		ResultData<Card> cardRd = cardService.getCardDetail(cardId, loginedMemberId);
 		md.addAttribute("cardRd", cardRd);
 		
 		return "/usr/card/detail";
@@ -70,17 +75,22 @@ public class CardController {
 	@RequestMapping("/usr/card/doWrite")
 	@ResponseBody
 	public String doWriteCard(@ModelAttribute ForWriteCard card){
-		ResultData<String> writeRd = cardService.doWriteCard(card);
-		return writeRd.getMsg();
+		
+		ResultData<Integer> writeRd = cardService.doWriteCard(card);
+		
+		return Util.jsReplace("", String.format("/usr/card/detail?cardId=%d", writeRd.getData()));
 	}
 	
 	@RequestMapping("/usr/card/showWrite")
 	public String showWriteCard() {
+		
 		return "/usr/card/write";
+		
 	}
 	
 	@RequestMapping("/usr/card/doModify")
 	public String doModify(@ModelAttribute ForWriteCard card, int cardId) {
+		
 		cardService.doModify(card, cardId);
 		
 		//카드 수정 후 수정된 카드의 detail 페이지로 이동
@@ -88,9 +98,9 @@ public class CardController {
 	}
 	
 	@RequestMapping("/usr/card/showModify")
-	public String showModify(Model md, int cardId, int memberId) {
-		
-		ResultData<Card> cardRd = cardService.getCardDetail(cardId, memberId);
+	public String showModify(Model md, int cardId) {
+		int loginedMemberId = ls.getLoginedMember().getId();
+		ResultData<Card> cardRd = cardService.getCardDetail(cardId, loginedMemberId);
 		// 수정하려는 카드의 기존 상태
 		md.addAttribute("cardRd", cardRd);
 		
