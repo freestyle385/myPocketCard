@@ -10,34 +10,40 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.Util.Util;
+import com.example.demo.Util.loginStatus;
 import com.example.demo.dto.ForWriteCard;
 import com.example.demo.dto.ResultData;
 import com.example.demo.service.CardService;
 import com.example.demo.vo.Card;
+import com.example.demo.vo.Member;
 
 @Controller
 public class CardController {
 	CardService cardService;
+	loginStatus ls;
 	
-	public CardController(CardService cardService) {
+	public CardController(CardService cardService, loginStatus ls) {
 		this.cardService = cardService;
+		this.ls = ls;
 	}
 	
 	@RequestMapping("/usr/card/list")
 	public String getCardList(
-			int memberId, 
 			String hashTag, 
 			@RequestParam(defaultValue = "-1") int learningStatus, 
 			String searchKeyword, 
 			@RequestParam(defaultValue = "1") int curPage,
 			Model md) {
 		
+		Member loginedMember = ls.getLoginedMember();
+		int loginedMemberId = loginedMember.getId();
+		
 		//listRd info (결과 코드, 데이터 정보, 카드리스트, 전체카드의 수(Int))
-		ResultData<ArrayList<Card>> listRd = cardService.getCardList(memberId, hashTag, learningStatus, searchKeyword, curPage);
+		ResultData<ArrayList<Card>> listRd = cardService.getCardList(loginedMemberId, hashTag, learningStatus, searchKeyword, curPage);
 		
 		md.addAttribute("listRd", listRd);
-		cardService.getAllHashTag(memberId);
-		md.addAttribute("allHashTag", cardService.getAllHashTag(memberId));
+		cardService.getAllHashTag(loginedMemberId);
+		md.addAttribute("allHashTag", cardService.getAllHashTag(loginedMemberId));
 		
 		
 		
