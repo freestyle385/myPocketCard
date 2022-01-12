@@ -24,20 +24,11 @@
   <div id="login-msg">
     <span>카카오 계정으로 편하게 로그인하세요!</span>
   </div>
-  <c:if test="${userId==null}">
   <div id="kakao-login-btn">
     <a href="https://kauth.kakao.com/oauth/authorize?client_id=477d92a75a81ced855b4f349c5380bf4&redirect_uri=http://localhost:8081/usr/member/doLogin&response_type=code" class="row">
       <img class="cell" src="/resource/img/kakao_login_btn.png">
     </a>
   </div>
-  </c:if>
-  <c:if test="${userId!=null}">
-  <div id="kakao-logout-btn" class="login-box">
-    <form name="logout" action="/usr/member/doLogout">
-	  <input type="submit" value="로그아웃">
-    </form>
-  </div>
-  </c:if>
 </section>  
 
 <!-- empty wrap -->

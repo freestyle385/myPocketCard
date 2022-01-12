@@ -3,8 +3,6 @@ package com.example.demo.Util;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
-import com.sbs.exam.demo.util.Utility;
-
 public class Util {
 	public static boolean emptyChk(Object obj) {
 		

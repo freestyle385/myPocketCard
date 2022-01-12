@@ -16,7 +16,7 @@
 </body>
   <section id="main-wrap">
   <div id="welcome-msg">
-    <span>안녕하세요, OOO님! 오늘도 포켓 카드 노트로 열공하세요!</span>
+    <span>안녕하세요, ${loginedMember.userNickname}님! 오늘도 포켓 카드 노트로 열공하세요!</span>
   </div>
   <div id="first-main">
     <div id="first-sentence">
