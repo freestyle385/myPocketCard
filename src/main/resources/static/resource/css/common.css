@@ -114,11 +114,17 @@ body{
   border-left: solid 3px green;
   border-right: solid 3px green;
   box-shadow: 1px 3px 4px darkgray;
-  width: 100%;
   display: none;
 }
 #my-page:hover > ul{
   display: block;
+}
+#my-page > ul:hover > li{
+  color: #ddd;	
+}
+#my-page > ul > li:hover {
+  color: #009300;
+  background-color: #E3FFDB;
 }
 /* top-bar 끝 */
 /* article 시작 */

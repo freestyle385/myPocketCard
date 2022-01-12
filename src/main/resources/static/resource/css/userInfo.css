@@ -1,0 +1,40 @@
+/* loginInfo-wrap 시작 */
+#loginInfo-wrap{
+  width: 800px;
+  margin: auto;
+  padding: 10px;
+  padding-top: 40px;
+}
+#info-msg{
+  margin: 30px auto;
+  text-align: center;
+  padding: 10px;
+}
+#info-table{
+  table-layout: fixed;
+  margin: 0 auto;
+  width: 60%;
+  border-collapse: collapse;
+  border: 3px solid #008000;
+  box-shadow: 1px 3px 4px darkgray;
+}
+#info-table > thead{
+  border-bottom: 3px solid #008000;
+}
+#info-table > thead > th:nth-child(1) {
+  width: 40%;
+}
+#info-table > thead > th:nth-child(2) {
+  width: 60%;
+}
+th, td {
+  padding: 20px;
+  text-align: center;
+}
+tbody tr:nth-child(odd) {
+  background-color: #E3FFDB;
+}
+tbody tr:nth-child(even) {
+  background-color: #ffffff;
+}
+/* loginInfo-wrap 끝 */
