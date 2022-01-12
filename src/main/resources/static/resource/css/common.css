@@ -107,6 +107,19 @@ body{
   display: block;
   cursor: pointer;
 }
+#my-page > ul{
+  color: #009300;
+  background-color: #ffffff;
+  border-bottom: solid 3px green;
+  border-left: solid 3px green;
+  border-right: solid 3px green;
+  box-shadow: 1px 3px 4px darkgray;
+  width: 100%;
+  display: none;
+}
+#my-page:hover > ul{
+  display: block;
+}
 /* top-bar 끝 */
 /* article 시작 */
 article{
