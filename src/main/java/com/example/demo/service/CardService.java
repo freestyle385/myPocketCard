@@ -3,6 +3,7 @@ package com.example.demo.service;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -44,8 +45,13 @@ public class CardService {
 
 	public ResultData<Card> getCardDetail(int cardId, int memberId) {
 		
-		ArrayList<Integer> NextPrevCard = cardRepository.getNextPrev(cardId);
 		Card card = cardRepository.getCardDetail(cardId, memberId);
+		
+		if(Util.emptyChk(card)) {
+			return new ResultData<Card>("F-1", "존재하지 않는 글 입니다.");
+		}
+		
+		Map<String, Integer> NextPrevCard = cardRepository.getNextPrev(cardId);
 		
 		return new ResultData<Card>("S-1", cardId + "번 카드 입니다.", card, NextPrevCard);
 	}

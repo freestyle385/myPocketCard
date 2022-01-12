@@ -1,10 +1,9 @@
 package com.example.demo.repository;
 
 import java.util.ArrayList;
-
+import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-
 import com.example.demo.dto.ForWriteCard;
 import com.example.demo.vo.Card;
 
@@ -21,7 +20,7 @@ public interface CardRepository {
 
 	void doModify(ForWriteCard card, @Param("cardId") int cardId);
 
-	ArrayList<Integer> getNextPrev(@Param("cardId") int cardId);
+	Map<String, Integer> getNextPrev(@Param("cardId") int cardId);
 
 	String getAllHashTag(int memberId);
 
