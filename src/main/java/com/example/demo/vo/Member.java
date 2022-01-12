@@ -11,7 +11,7 @@ public class Member {
 	int id;
 	String infoOrigin;
 	String userEmail;
-	String userName;
+	String userNickname;
 	String regDate;
 	int delStatus;
 	String delDate;
