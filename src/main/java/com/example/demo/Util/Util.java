@@ -1,9 +1,14 @@
 package com.example.demo.Util;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import javax.servlet.http.HttpServletResponse;
+import org.springframework.stereotype.Component;
 
 public class Util {
+	
 	public static boolean emptyChk(Object obj) {
 		
 		if(obj != null) {
@@ -78,5 +83,24 @@ public class Util {
 				""";
 		
 		return String.format(script, msg);
+	}
+	
+	public static void javaHistoryBack(HttpServletResponse rs, String msg) throws IOException{
+		
+		rs.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = rs.getWriter();
+		 
+		out.println(jsHistoryBack(msg));
+		out.flush();
+	}
+	
+	public static void javaReplace(HttpServletResponse rs, String msg, String uri) throws IOException{
+		
+		rs.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = rs.getWriter();
+		 
+		out.println(jsReplace(msg, uri));
+		out.flush();
+		
 	}
 }

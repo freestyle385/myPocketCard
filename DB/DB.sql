@@ -20,6 +20,7 @@ CREATE TABLE `questionCard`
 	`title` VARCHAR(50) NOT NULL,
 	`body` TEXT NOT NULL,
 	`tagStatus` VARCHAR(200),
+	`learningStatus` INT(10) NOT NULL DEFAULT 0 COMMENT '0 = 학습전, 1 = 학습완료',
 	`regDate` DATETIME NOT NULL DEFAULT NOW(),
 	`updateDate` DATETIME NOT NULL DEFAULT NOW()
 );

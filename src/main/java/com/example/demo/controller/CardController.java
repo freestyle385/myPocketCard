@@ -1,6 +1,9 @@
 package com.example.demo.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.Util.Util;
-import com.example.demo.Util.loginStatus;
+import com.example.demo.Util.LoginStatus;
 import com.example.demo.dto.ForWriteCard;
 import com.example.demo.dto.ResultData;
 import com.example.demo.service.CardService;
@@ -20,9 +23,9 @@ import com.example.demo.vo.Member;
 @Controller
 public class CardController {
 	CardService cardService;
-	loginStatus ls;
+	LoginStatus ls;
 	
-	public CardController(CardService cardService, loginStatus ls) {
+	public CardController(CardService cardService, LoginStatus ls) {
 		this.cardService = cardService;
 		this.ls = ls;
 	}
@@ -50,23 +53,31 @@ public class CardController {
 	}
 	
 	@RequestMapping("/usr/card/setCardCondition")
-	@ResponseBody
 	public String setCardCondition(String cardId, Integer learningStatus) {
 		
 		int loginedMemberId = ls.getLoginedMember().getId();
 		
 		ResultData<String> setRd = cardService.setCardCondition(cardId, loginedMemberId, learningStatus);
 		
-		return setRd.getMsg();
+		return "/usr/card/list";
 	}
 	
 	@RequestMapping("/usr/card/detail")
-	public String getCardDetail(Model md, int cardId) {
+	public String getCardDetail(Model md, int cardId, HttpServletResponse resp) {
 		
 		int loginedMemberId = ls.getLoginedMember().getId();
 		
 		//cardRd 정보 (결과 코드, 결과 메세지, 카드VO, 이전 다음카드의 id 배열)
 		ResultData<Card> cardRd = cardService.getCardDetail(cardId, loginedMemberId);
+		
+		if(cardRd.isFail()) {
+			try {
+				Util.javaHistoryBack(resp, cardRd.getMsg());
+			}catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
 		md.addAttribute("cardRd", cardRd);
 		
 		return "/usr/card/detail";
@@ -94,18 +105,26 @@ public class CardController {
 	}
 	
 	@RequestMapping("/usr/card/doModify")
+	@ResponseBody
 	public String doModify(@ModelAttribute ForWriteCard card, int cardId) {
 		
-		cardService.doModify(card, cardId);
+		card.setWriterId(ls.getLoginedMember().getId());
+		ResultData<Integer> modifyRd = cardService.doModify(card, cardId);
 		
 		//카드 수정 후 수정된 카드의 detail 페이지로 이동
-		return String.format("/usr/card/detail?cardId=%d&memberId=%d", cardId, card.getWriterId());
+		return Util.jsReplace(modifyRd.getMsg(), String.format("/usr/card/detail?cardId=%d&memberId=%d", cardId, card.getWriterId())); 
 	}
 	
 	@RequestMapping("/usr/card/showModify")
 	public String showModify(Model md, int cardId) {
+		
 		int loginedMemberId = ls.getLoginedMember().getId();
 		ResultData<Card> cardRd = cardService.getCardDetail(cardId, loginedMemberId);
+		
+		if(cardRd.isFail()) {
+			Util.jsHistoryBack(cardRd.getMsg());
+		}
+		
 		// 수정하려는 카드의 기존 상태
 		md.addAttribute("cardRd", cardRd);
 		

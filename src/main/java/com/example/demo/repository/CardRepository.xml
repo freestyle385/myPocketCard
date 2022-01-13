@@ -62,7 +62,7 @@
 	</select>
 	
 	<update id="doModify" parameterType="com.example.demo.dto.ForWriteCard">
-		UPDATE questionCard
+		UPDATE `questionCard`
 		SET
 		`title` = #{card.title},
 		`body` = #{card.body},

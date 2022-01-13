@@ -74,16 +74,16 @@ public class CardService {
 	public ResultData<String> setCardCondition(String cardId, int memberId, Integer learningStatus) {
 		ArrayList<Integer> cardIdArr = new ArrayList<>();
 		
-		for(String s : cardId.split(" ")) {
+		for(String s : cardId.split(",")) {
 			cardIdArr.add(Integer.parseInt(s));
 		}
 		cardRepository.setCardCondition(cardIdArr, memberId , learningStatus);
 		return new ResultData<String>("S-1", "변경성공");
 	}
 
-	public void doModify(ForWriteCard card, int cardId) {
+	public ResultData<Integer> doModify(ForWriteCard card, int cardId) {
 		cardRepository.doModify(card, cardId);
-		
+		return new ResultData<Integer>("S-1", "카드 수정 완료", cardId);
 	}
 	
 	public SortedSet<String> getAllHashTag(int memberId){

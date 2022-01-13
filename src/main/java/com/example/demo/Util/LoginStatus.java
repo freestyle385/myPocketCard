@@ -11,11 +11,11 @@ import lombok.Getter;
 @Component
 @Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
 @Getter
-public class loginStatus {
+public class LoginStatus {
 	
 	private Member loginedMember;
 	
-	public loginStatus(HttpSession session) {
+	public LoginStatus(HttpSession session) {
 		loginedMember = (Member) session.getAttribute("loginedMember");
 	}
 	
