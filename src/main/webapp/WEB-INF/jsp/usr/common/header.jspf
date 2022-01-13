@@ -24,7 +24,7 @@
 	    <div id="login-status" class="cell-r"><h4><a href="/usr/member/showLogin">로그인</a></h4></div>
 	    </c:if>
 	    <c:if test="${loginedMember != null}">
-	    <div id="login-status" class="cell-r"><h4><a href="/usr/member/doLogout">로그아웃</a></h4></div>
+	    <div id="login-status" class="cell-r"><h4><a onclick="if (confirm('로그아웃 하시겠습니까?') == false) {return false};" href="/usr/member/doLogout">로그아웃</a></h4></div>
 	    </c:if>
 	  </div>
 	  <div id="second-top-bar">

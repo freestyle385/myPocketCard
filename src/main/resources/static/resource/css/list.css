@@ -1,6 +1,7 @@
 /* list의 검색 폼 시작 */
 #list-wrap{
   width: 800px;
+  min-height: 600px;
   margin: auto;
   padding: 10px;
   padding-top: 40px;
@@ -89,6 +90,12 @@
 }
 #card-list{
   width: 100%;
+}
+#card-msg{
+  width: 100%;
+  margin: 50px auto;
+  text-align: center;	
+  color: #008000;
 }
 #card{
   width: 100%;

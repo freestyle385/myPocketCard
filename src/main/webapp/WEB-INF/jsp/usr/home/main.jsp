@@ -16,7 +16,12 @@
 </body>
   <section id="main-wrap">
   <div id="welcome-msg">
+    <c:if test="${loginedMember == null}">
+    <span>포켓 카드 노트는 로그인 후 이용 가능합니다.</span>
+    </c:if>
+    <c:if test="${loginedMember != null}">
     <span>안녕하세요, ${loginedMember.userNickname}님! 오늘도 포켓 카드 노트로 열공하세요!</span>
+    </c:if>
   </div>
   <div id="first-main">
     <div id="first-sentence">

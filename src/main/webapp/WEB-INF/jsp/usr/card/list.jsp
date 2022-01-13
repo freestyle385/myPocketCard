@@ -72,6 +72,9 @@
       </div>
     </div>
     <div id="card-list">
+      <c:if test="${listRd.getData().size() == 0}">
+      <div id="card-msg">카드가 존재하지 않습니다. 지금 카드를 생성해보세요!</div>
+      </c:if>
    	  <c:forEach var="card" items="${listRd.getData()}">
    	  	<div id="card" class="row" >
 	        <div id="card-info" class="cell">
