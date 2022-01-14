@@ -5,7 +5,7 @@
 	namespace="com.example.demo.repository.CardRepository">
 	
 	<select id="getCardList" resultType="com.example.demo.vo.Card" parameterType="Map">
-		SELECT * FROM questionCard
+		SELECT * FROM `questionCard`
 		<where>
 			`writerId`=#{memberId}
 			<if test="learningStatus >= 0">
@@ -24,7 +24,7 @@
 	</select>
 	
 	<insert id="doWriteCard" parameterType="com.example.demo.dto.ForWriteCard">
-		INSERT INTO `questioncard` 
+		INSERT INTO `questionCard` 
 			( 
 			`writerId`, 
 			`title`, 
@@ -66,7 +66,8 @@
 		SET
 		`title` = #{card.title},
 		`body` = #{card.body},
-		`tagStatus` = #{card.tagStatus}
+		`tagStatus` = #{card.tagStatus},
+		`learningStatus` = #{card.learningStatus}
 		WHERE
 		`id` = #{cardId} AND `writerId` = #{card.writerId} 
 	</update>
@@ -81,7 +82,7 @@
 	<select id="getAllHashTag" resultType="String">
 		SELECT GROUP_CONCAT(`tagStatus` SEPARATOR ',') 
 		FROM `questionCard`
-		WHERE `writerId` = #{memberId};
+		WHERE `writerId` = #{memberId} AND `tagStatus` != ''
 	</select>
 	
 	<select id="getLastInsertId" resultType="Integer">

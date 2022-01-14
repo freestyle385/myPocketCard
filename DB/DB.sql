@@ -17,7 +17,7 @@ CREATE TABLE `questionCard`
 (
 	`id` INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	`writerId` INT(10) UNSIGNED NOT NULL,
-	`title` VARCHAR(50) NOT NULL,
+	`title` VARCHAR(100) NOT NULL,
 	`body` TEXT NOT NULL,
 	`tagStatus` VARCHAR(200),
 	`learningStatus` INT(10) NOT NULL DEFAULT 0 COMMENT '0 = 학습전, 1 = 학습완료',

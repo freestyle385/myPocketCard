@@ -37,8 +37,12 @@
   
   <c:set var="nextToCardMap" value="${cardRd.getExtraData()}"/>
   <div id="move-btn-wrap" class="row">
+  <c:if test="${nextToCardMap.get('prev') != 0}">
   	<a href="/usr/card/detail?cardId=${nextToCardMap.get('prev')}" id="prev-btn" class="move-btn cell"><< 이전 글</a>
+  </c:if>
+  <c:if test="${nextToCardMap.get('next') != 0}">
   	<a href="/usr/card/detail?cardId=${nextToCardMap.get('next')}" id="next-btn" class="move-btn cell-r">다음 글 >></a>
+  </c:if>
   </div>
   
   <div id="card" class="row">

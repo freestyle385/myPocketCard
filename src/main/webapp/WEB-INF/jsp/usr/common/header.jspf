@@ -34,8 +34,8 @@
 	        <li id="my-page" class="menu cell">
             	마이페이지
 	            <ul>
-	              <li><a href="#">회원 정보</a></li>
-	              <li><a href="#">회원 탈퇴</a></li>
+	              <li><a href="/usr/member/info">회원 정보</a></li>
+	              <li><a href="/usr/member/doDelete" onClick="if(confirm('정말로 탈퇴하시겠습니까?') == false) {return false};">회원 탈퇴</a></li>
 	            </ul>
           	</li>
 	     </ul>

@@ -8,5 +8,9 @@ public interface MemberRepository {
 
 	void doJoin(String infoOrigin, String userEmail, String userNickname);
 	
-	Member getMember(String userEmail, String userNickname);
+	Member getMember(String userEmail);
+
+	void doDelete(Member loginedMember);
+
+	void updateMember(Member member);
 }

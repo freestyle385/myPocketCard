@@ -21,7 +21,21 @@
 	</insert>
 	
 	<select id="getMember" resultType="com.example.demo.vo.Member">
-		SELECT * FROM `member` WHERE `userEmail` = #{userEmail} AND `userNickname` = #{userNickname}
+		SELECT * FROM `member` WHERE `userEmail` = #{userEmail}
 	</select>
+	
+	<update id="doDelete" parameterType="com.example.demo.vo.Member">
+		UPDATE `member` SET `delStatus` = 1, `delDate` = NOW() WHERE `userEmail` = #{userEmail}
+	</update>
+	
+	<update id="updateMember" parameterType="com.example.demo.vo.Member">
+		UPDATE `member` 
+		SET 
+		`delStatus` = 0, 
+		`delDate` = null, 
+		userNickname = '${userNickname}', 
+		regDate = NOW() 
+		WHERE `userEmail` = #{userEmail}
+	</update>
 	
 </mapper>

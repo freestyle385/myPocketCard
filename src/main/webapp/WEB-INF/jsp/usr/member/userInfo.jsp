@@ -22,7 +22,7 @@
 <!-- loginInfo-wrap -->
 <section id="loginInfo-wrap" class="cell">
   <div id="info-msg">
-    <span>${loginedMember.userNickname}님의 회원 정보</span>
+    <span>${memberInfo.userNickname}님의 회원 정보</span>
   </div>
   <table id="info-table">
     <thead>
@@ -34,19 +34,19 @@
     <tbody>
       <tr>
         <th>정보 출처</th>
-        <td>${loginedMember.infoOrigin}</td>
+        <td>${memberInfo.infoOrigin}</td>
       </tr>
       <tr>
         <th>계정</th>
-        <td>${loginedMember.userEmail}</td>
+        <td>${memberInfo.userEmail}</td>
       </tr>
       <tr>
         <th>닉네임</th>
-        <td>${loginedMember.userNickname}</td>
+        <td>${memberInfo.userNickname}</td>
       </tr>
       <tr>
         <th>가입일</th>
-        <td>${loginedMember.regDate}</td>
+        <td>${memberInfo.regDate}</td>
       </tr>
     </tbody>
   </table>

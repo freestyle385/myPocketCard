@@ -32,7 +32,7 @@ public class CardController {
 	
 	@RequestMapping("/usr/card/list")
 	public String getCardList(
-			String hashTag, 
+			String tagStatus, 
 			@RequestParam(defaultValue = "-1") int learningStatus, 
 			String searchKeyword, 
 			@RequestParam(defaultValue = "1") int curPage,
@@ -41,7 +41,7 @@ public class CardController {
 		int loginedMemberId = ls.getLoginedMember().getId();
 		
 		//listRd info (결과 코드, 데이터 정보, 카드리스트, 전체카드의 수(Int))
-		ResultData<ArrayList<Card>> listRd = cardService.getCardList(loginedMemberId, hashTag, learningStatus, searchKeyword, curPage);
+		ResultData<ArrayList<Card>> listRd = cardService.getCardList(loginedMemberId, tagStatus, learningStatus, searchKeyword, curPage);
 		
 		md.addAttribute("listRd", listRd);
 		cardService.getAllHashTag(loginedMemberId);
@@ -109,6 +109,9 @@ public class CardController {
 	public String doModify(@ModelAttribute ForWriteCard card, int cardId) {
 		
 		card.setWriterId(ls.getLoginedMember().getId());
+		if(Util.fieldChk(card).size() > 0) {
+			return Util.jsHistoryBack("입력되지 않은 값이 있습니다.");
+		}
 		ResultData<Integer> modifyRd = cardService.doModify(card, cardId);
 		
 		//카드 수정 후 수정된 카드의 detail 페이지로 이동
@@ -116,13 +119,17 @@ public class CardController {
 	}
 	
 	@RequestMapping("/usr/card/showModify")
-	public String showModify(Model md, int cardId) {
+	public String showModify(Model md, int cardId, HttpServletResponse resp) {
 		
 		int loginedMemberId = ls.getLoginedMember().getId();
 		ResultData<Card> cardRd = cardService.getCardDetail(cardId, loginedMemberId);
 		
 		if(cardRd.isFail()) {
-			Util.jsHistoryBack(cardRd.getMsg());
+			try {
+				Util.javaHistoryBack(resp, cardRd.getMsg());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 		
 		// 수정하려는 카드의 기존 상태
@@ -130,4 +137,6 @@ public class CardController {
 		
 		return "/usr/card/modify";
 	}
+	
+	
 }

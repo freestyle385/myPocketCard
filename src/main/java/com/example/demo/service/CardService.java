@@ -3,6 +3,7 @@ package com.example.demo.service;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.SortedSet;
@@ -23,22 +24,21 @@ public class CardService {
 		this.cardRepository = cardRepository;
 	}
 
-	public ResultData<ArrayList<Card>> getCardList(int memberId, String hashTag, int learningStatus, String searchKeyword, int curPage) {
+	public ResultData<ArrayList<Card>> getCardList(int memberId, String tagStatus, int learningStatus, String searchKeyword, int curPage) {
 		
-		String[] hashTagArr = new String[0];
-		if(!Util.emptyChk(hashTag)){
-			hashTagArr = hashTag.split(" ");
+		List<String> hashTagArr = new ArrayList<>();
+		if(!Util.emptyChk(tagStatus)){
+			hashTagArr = Arrays.asList(tagStatus.split(","));
 		}
 		
-
 		ArrayList<Card> allCardList = cardRepository.getCardList(memberId, hashTagArr, learningStatus, searchKeyword);
-		int limitStart = (curPage - 1) * 4 > allCardList.size() ? allCardList.size() : (curPage - 1) * 4;
-		int limitRange = limitStart + 4 > allCardList.size() ? allCardList.size() : limitStart + 4;
+		//int limitStart = (curPage - 1) * 4 > allCardList.size() ? allCardList.size() : (curPage - 1) * 4;
+		//int limitRange = limitStart + 4 > allCardList.size() ? allCardList.size() : limitStart + 4;
 		
 		//전체 게시물에서 subList를 통한 Limit		
-		ArrayList<Card> subCardList = new ArrayList<Card>(allCardList.subList(limitStart, limitRange));
+		//ArrayList<Card> subCardList = new ArrayList<Card>(allCardList.subList(limitStart, limitRange));
 		
-		ResultData<ArrayList<Card>> listRd = new ResultData<>("S-1", "카드리스트, extraDataInfo:allCardListSize", subCardList, allCardList.size() + "");
+		ResultData<ArrayList<Card>> listRd = new ResultData<>("S-1", "카드리스트, extraDataInfo:allCardListSize", allCardList, allCardList.size() + "");
 		
 		return listRd;
 	}

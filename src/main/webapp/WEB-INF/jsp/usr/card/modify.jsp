@@ -31,10 +31,12 @@
     <!--  해시태그 목록   -->
     <ul id="tag-list" class="cell row">
       <!-- jstl fn을 활용해 태그 문자열 split -->
-      <c:set var="tagStatusList" value="${fn:split(cardRd.getData().getTagStatus(), ',')}"/>
-      <c:forEach var="tagValue" items="${tagStatusList}" varStatus="status">
-      	<li class="tag-item cell"><span>#</span>${tagValue}<span class='del-btn' idx="${status.index}"> x</span></li>
-      </c:forEach>
+      <c:if test="${cardRd.getData().getTagStatus() != ''}">
+	      <c:set var="tagStatusList" value="${fn:split(cardRd.getData().getTagStatus(), ',')}"/>
+	      <c:forEach var="tagValue" items="${tagStatusList}" varStatus="status">
+	      	<li class="tag-item cell"><span>#</span>${tagValue}<span class='del-btn' idx="${status.index}"> x</span></li>
+	      </c:forEach>
+      </c:if>
     </ul>
   </div>
   <span id="msg">*입력 후 엔터를 누르면 적용됩니다</span>
@@ -49,14 +51,8 @@
         <div id="setter-name" class="cell"><span>학습 상태</span></div>
         <div id="setter-select" class="cell">
           <select name="learningStatus">
-            <option value="${cardRd.getData().getLearningStatus()}" disabled>
-	            <c:choose>
-		            <c:when test="${cardRd.getData().getLearningStatus() == 0}">학습 필요</c:when>
-		            <c:when test="${cardRd.getData().getLearningStatus() == 1}">학습 완료</c:when>
-	            </c:choose>
-            </option>
-            <option value="0">학습 필요</option>
-            <option value="1">학습 완료</option>
+            <option value="0" ${cardRd.data.learningStatus == 0 ? 'selected' : ''}>학습 필요</option>
+            <option value="1" ${cardRd.data.learningStatus == 1 ? 'selected' : ''}>학습 완료</option>
           </select>
         </div>
       </div>
@@ -64,6 +60,7 @@
     
     <div id="card-body" class="cell">
       <div id="question"><span>Q.</span><textarea name="title" rows="1" autocomplete="off" placeholder="질문을 입력해주세요.">${cardRd.getData().getTitle()}</textarea></div>
+      <div id="byte-box"><span id="nowByte">0</span> / 100 byte</div>
       <hr>
       <div id="answer"><span>A.</span><textarea name="body" rows="20" autocomplete="off" placeholder="답변을 입력해주세요.">${cardRd.getData().getBody()}</textarea></div>
     </div>
@@ -87,7 +84,12 @@
 $(document).ready(function(){
 	  // 외부. 수정 이전에 생성된 태그 문자열을 split
 	  const oldTag = "${cardRd.getData().getTagStatus()}";
-	  var oldTagList = oldTag.split(',');
+	  var oldTagList = new Array();
+	  
+	  if(oldTag != ''){
+		  oldTagList = oldTag.split(',');
+	  }
+	  
 	  // 외부. tag 생성을 위한 배열
 	  var tag = new Array();
 	  var counter = 0;
@@ -100,6 +102,7 @@ $(document).ready(function(){
 	  function addTag (value) {
 	    tag[counter] = value; // 태그를 Object 안에 추가
 	    counter++; // 태그 생성 시 같이 생성되는 del-btn의 id
+	    console.log(tag);
 	  }
 	
 	  // 내부. tag 배열의 값들을 value 배열로 저장
@@ -163,6 +166,39 @@ $(document).ready(function(){
 	    $("#card").submit();
 	  });
 });
+
+fn_checkByte();
+
+$("#question > textarea").on("keyup", fn_checkByte);
+
+function fn_checkByte(){
+    const maxByte = 100; //최대 100바이트
+    const text_val = $("#question > textarea").val(); //입력한 문자
+    console.log(text_val);
+    const text_len = text_val.length; //입력한 문자수
+    
+    let totalByte=0;
+    for(let i=0; i<text_len; i++){
+    	const each_char = text_val.charAt(i);
+        const uni_char = escape(each_char) //유니코드 형식으로 변환
+        if(uni_char.length>4){
+        	// 한글 : 2Byte
+            totalByte += 2;
+        }else{
+        	// 영문,숫자,특수문자 : 1Byte
+            totalByte += 1;
+        }
+    }
+    
+    if(totalByte>maxByte){
+    	alert('최대 100Byte까지만 입력가능합니다.');
+        	document.getElementById("nowByte").innerText = totalByte;
+            document.getElementById("nowByte").style.color = "red";
+        }else{
+        	document.getElementById("nowByte").innerText = totalByte;
+            document.getElementById("nowByte").style.color = "green";
+        }
+    }
 </script>
 </body>
 </html>
