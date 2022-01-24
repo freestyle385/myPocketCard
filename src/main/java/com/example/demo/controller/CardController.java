@@ -12,13 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.example.demo.Util.Util;
 import com.example.demo.Util.LoginStatus;
+import com.example.demo.Util.Util;
 import com.example.demo.dto.ForWriteCard;
 import com.example.demo.dto.ResultData;
 import com.example.demo.service.CardService;
 import com.example.demo.vo.Card;
-import com.example.demo.vo.Member;
 
 @Controller
 public class CardController {
@@ -46,8 +45,12 @@ public class CardController {
 		md.addAttribute("listRd", listRd);
 		cardService.getAllHashTag(loginedMemberId);
 		md.addAttribute("allHashTag", cardService.getAllHashTag(loginedMemberId));
+		md.addAttribute("searchedLearn", learningStatus);
+		md.addAttribute("searchedTag", tagStatus);
 		
-		
+		if (searchKeyword != null) {
+			md.addAttribute("searchedKeyword", searchKeyword);
+		}
 		
 		return "/usr/card/list";
 	}

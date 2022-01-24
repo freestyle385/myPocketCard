@@ -8,35 +8,38 @@ import com.example.demo.vo.Member;
 
 @Service
 public class MemberService {
-	
+
 	MemberRepository memberRepository;
-	
+
 	public MemberService(MemberRepository memberRepository) {
 		this.memberRepository = memberRepository;
 	}
 
 	public ResultData<Member> doJoin(String infoOrigin, String userEmail, String userNickname) {
-		
+
 		Member member = memberRepository.getMember(userEmail);
-		
-		if(member.getDelStatus() == 1) {
+
+		if (member == null) {
+			memberRepository.doJoin(infoOrigin, userEmail, userNickname);
+		} else if (member.getDelStatus() == 1) {
 			memberRepository.updateMember(member);
+		} else {
+			memberRepository.doJoin(infoOrigin, userEmail, userNickname);
 		}
-		
-		memberRepository.doJoin(infoOrigin, userEmail, userNickname);
-		
+
+
 		return new ResultData<Member>("S-1", "로그인 성공", member);
 	}
-	
+
 	public Member getMember(String userEmail) {
-		
+
 		return memberRepository.getMember(userEmail);
-		
+
 	}
 
 	public void doDelete(Member loginedMember) {
-		
+
 		memberRepository.doDelete(loginedMember);
-		
+
 	}
 }
