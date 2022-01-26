@@ -7,26 +7,7 @@
 }
 #tag-wrap{
   width: 100%;
-}
-#tag-input{
-  width: 140px;
-  height: 30px;
-  text-align: center;
-  font-family: inherit;
-  border: solid 1px green;
-  border-radius: 4px;
-  box-shadow: 1px 1px 5px darkgray;
-  margin-right: 5px;
-  margin-bottom: 5px;
-}
-#tag{
-  width: 80%;
-  height: 100%;
-  outline: none;
-  border: none;
-  font-family: inherit;
-  text-align: center;
-  background-color: inherit;
+  height: 35px;
 }
 #tag-list > .tag-item{
   height: 30px;
@@ -112,9 +93,13 @@
   margin: auto;
 }
 #answer{
-  display: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5s;
 }
 #answer.active{
+  opacity: 1;
+  visibility: visible;
   display: flex;
   flex-flow: row nowrap;
   justify-content: flex-start;
@@ -127,20 +112,29 @@
   color: #008000;
 }
 #disappearable{
-  display: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5s;
 }
 #disappearable.active{
-  display: block;
+  opacity: 1;
+  visibility: visible;
 }
 #answer-check, #answer-hide{
   display: none;
 }
 #answer-check.active, #answer-hide.active{
   display: block;
-  width: 100%;
-  margin-top: 10px;
+  margin: 10px auto;
+  width: 120px;
+  height: 25px;
+  background-color: #008000;
+  border: solid 1px green;
+  border-radius: 4px;
+  box-shadow: 1px 1px 5px darkgray;
+  font-size: 15px;
   text-align: center;
-  color: #008000;
+  color: white;
   cursor: pointer;
 }
 #usr-answer{

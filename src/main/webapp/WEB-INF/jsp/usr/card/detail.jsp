@@ -59,12 +59,12 @@
     <div id="card-body" class="cell">
       <div id="question"><span>Q.</span>${cardRd.getData().getTitle()}</div>
       <hr>
+      <div id="answer-check" class="active">정답 확인하기</div>
+      <div id="answer-hide" class="">정답 숨기기</div>
       <!-- 정답 숨김 시작 -->
       <div id="answer" class=""><span>A.</span>${cardRd.getData().getBody()}</div>
       <hr id="disappearable" class="">
       <!-- 정답 숨김 끝 -->
-      <div id="answer-check" class="active">↓정답 확인하기↓</div>
-      <div id="answer-hide" class="">↑정답 숨기기↑</div>
       <div id="usr-answer"><span>A.</span><textarea rows="20" autocomplete="off" placeholder="자유롭게 정답을 작성해보세요. 이 정답은 저장되지 않습니다."></textarea></div>
     </div>
    </div>

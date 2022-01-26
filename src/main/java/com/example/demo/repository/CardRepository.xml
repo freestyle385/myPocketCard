@@ -89,4 +89,15 @@
 		SELECT LAST_INSERT_ID()
 	</select>
 	
+	<delete id="doDelete">
+		DELETE FROM `questionCard` WHERE id = #{cardId};
+	</delete>
+	
+	<select id="getNeedLearningCnt" resultType="int">
+		SELECT COUNT(*) FROM `questionCard` WHERE `learningStatus` = 0;
+	</select>
+	
+	<select id="getComplLearningCnt" resultType="int">
+		SELECT COUNT(*) FROM `questionCard` WHERE `learningStatus` = 1;
+	</select>
 </mapper>

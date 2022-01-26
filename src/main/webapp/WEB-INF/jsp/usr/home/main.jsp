@@ -29,14 +29,11 @@
     </div>
     <div id="first-content">
       <div id="content-title">
-        <h4>제목을 입력할 수 있어요.</h4>
+        <span>질문을 입력할 수 있어요.</span>
       </div>
       <hr>
       <div id="content-body">
-        <h4>내용을 입력할 수 있어요.</h4>
-      </div>
-      <div id="content-tag">
-        <span>#자바 #스프링 #태그를 추가할 수 있어요</span>
+        <span>답변을 입력할 수 있어요.</span>
       </div>
     </div>
   </div>
@@ -48,8 +45,23 @@
     <div id="second-content">
       <span>학습 주제와 학습 목적에 따라 원하는 카드만 검색할 수 있습니다.</span>
       <div id="recent-tag-box">
-        <span>최근 생성한 해시태그</span>
-        <div id="recent-tag-list">#해시태그 값 불러오기</div>
+        <h4>최근 생성한 해시태그</h4>
+        
+        <c:if test="${loginedMember == null}">
+    	<span>로그인 후 확인하실 수 있습니다.</span>
+    	</c:if>
+    	
+    	<c:if test="${loginedMember != null}">
+    	<!--  해시태그 목록   -->
+    	<ul id="recent-tag-list" class="cell row">
+    	<c:if test="${allHashTag != null}">
+	    	<!-- jstl fn을 활용해 태그 문자열 split -->
+	    	<c:forEach var="tagValue" items="${allHashTag}">
+	    		<li class="tag-item cell">#${tagValue}</li>
+	    	</c:forEach>
+    	</c:if>
+    	</ul>
+    	</c:if>
       </div>
     </div>
   </div>
@@ -59,12 +71,25 @@
       <h3>카드의 문제를 풀어본 뒤, 학습 필요/학습 완료 상태를 설정해보세요!</h3>
     </div>
     <div id="third-content">
-      <span>카드의 정답을 숨김 설정 후, 본인만의 답변을 자유롭게 서술해볼 수 있습니다.</span>
+      <span>본인만의 답변을 자유롭게 서술한 후, 정답과 비교해볼 수 있습니다.</span>
       <div id="learning-status-box">
-        <span>학습 필요/학습 완료 현황</span>
-        <div id="learning-status-count">
-          10개 / 2개
+        <h4>카드 학습 현황</h4>
+        
+        <c:if test="${loginedMember == null}">
+    	<span>로그인 후 확인하실 수 있습니다.</span>
+    	</c:if>
+        
+        <c:if test="${loginedMember != null}">
+        <div class="learning-status-count">
+          전체 카드 수는 ${allLearningCnt} 개입니다
         </div>
+        <div class="learning-status-count">
+          학습 필요 카드 수는 ${needLearningCnt} 개입니다
+        </div>
+        <div class="learning-status-count">
+          학습 완료 카드 수는 ${complLearningCnt} 개입니다 (${complLearningRate} %)
+        </div>
+        </c:if>
       </div>
   	</div>
   </div>

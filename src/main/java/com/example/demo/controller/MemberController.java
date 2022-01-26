@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
 import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -9,9 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.Util.KakaoAPI;
+import com.example.demo.Util.Util;
 import com.example.demo.dto.ResultData;
 import com.example.demo.service.MemberService;
 import com.example.demo.vo.Member;
@@ -34,6 +33,7 @@ public class MemberController {
 	
 	
 	@RequestMapping("/usr/member/doLogin")
+	@ResponseBody
 	public String doLogin(HttpSession session, String code) {
 		
 		// 1번 인증코드 요청 전달
@@ -53,10 +53,11 @@ public class MemberController {
 			session.setAttribute("loginedMember", loginedMember);
 		}
 		
-		return "/usr/home/main";
+		return Util.jsReplace("", String.format("/usr/home/main"));
 	}
 	
 	@RequestMapping("/usr/member/doLogout")
+	@ResponseBody
 	public String doLogout(HttpSession session) {
 		
 		String accessToken = (String) session.getAttribute("accessToken");
@@ -64,7 +65,7 @@ public class MemberController {
 		session.removeAttribute("loginedMember");
 		session.removeAttribute("accessToken");
 		
-		return "/usr/home/main";
+		return Util.jsReplace("", String.format("/usr/home/main"));
 	}
 	
 	@RequestMapping("/usr/member/info")

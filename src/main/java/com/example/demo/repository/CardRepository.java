@@ -26,5 +26,11 @@ public interface CardRepository {
 	String getAllHashTag(int memberId);
 
 	Integer getLastInsertId();
+
+	void doDelete(@Param("cardId") int cardId, @Param("memberId") int memberId);
+
+	int getNeedLearningCnt(@Param("memberId") int memberId);
+	
+	int getComplLearningCnt(@Param("memberId") int memberId);
 	
 }

@@ -56,13 +56,14 @@ public class CardController {
 	}
 	
 	@RequestMapping("/usr/card/setCardCondition")
+	@ResponseBody
 	public String setCardCondition(String cardId, Integer learningStatus) {
 		
 		int loginedMemberId = ls.getLoginedMember().getId();
 		
-		ResultData<String> setRd = cardService.setCardCondition(cardId, loginedMemberId, learningStatus);
+		cardService.setCardCondition(cardId, loginedMemberId, learningStatus);
 		
-		return "/usr/card/list";
+		return Util.jsReplace("", String.format("/usr/card/list"));
 	}
 	
 	@RequestMapping("/usr/card/detail")
@@ -141,5 +142,18 @@ public class CardController {
 		return "/usr/card/modify";
 	}
 	
+	@RequestMapping("/usr/card/doDelete")
+	@ResponseBody
+	public String doDelete(Model md, int cardId, HttpServletResponse resp) {
+		
+		int loginedMemberId = ls.getLoginedMember().getId();
+		ResultData<String> deleteRd = cardService.deleteCard(cardId, loginedMemberId);
+		
+		if(deleteRd.isFail()) {
+			return Util.jsHistoryBack(deleteRd.getMsg());
+		}
+		
+		return Util.jsReplace("", String.format("/usr/card/list"));
+	}
 	
 }

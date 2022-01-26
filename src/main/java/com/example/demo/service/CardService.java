@@ -2,14 +2,13 @@ package com.example.demo.service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
 import org.springframework.stereotype.Service;
+
 import com.example.demo.Util.Util;
 import com.example.demo.dto.ForWriteCard;
 import com.example.demo.dto.ResultData;
@@ -97,5 +96,29 @@ public class CardService {
 		}
 		
 		return null;
+	}
+
+	public ResultData<String> deleteCard(int cardId, int memberId) {
+		
+		Card card = cardRepository.getCardDetail(cardId, memberId);
+		
+		if(Util.emptyChk(card)) {
+			return new ResultData<String>("F-1", "존재하지 않는 글 입니다.");
+		}
+		
+		cardRepository.doDelete(cardId, memberId);
+		return new ResultData<String>("S-1", "카드 삭제 완료");
+	}
+	
+	public int getNeedLearningCnt(int memberId) {
+		int needLearningCnt = cardRepository.getNeedLearningCnt(memberId);
+		
+		return needLearningCnt;
+	}
+	
+	public int getComplLearningCnt(int memberId) {
+		int complLearningCnt = cardRepository.getComplLearningCnt(memberId);
+		
+		return complLearningCnt;
 	}
 }
