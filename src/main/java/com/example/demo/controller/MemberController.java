@@ -18,8 +18,8 @@ import com.example.demo.vo.Member;
 @Controller
 public class MemberController {
 	
-	MemberService memberService;
-	KakaoAPI kakaoAPI;
+	private MemberService memberService;
+	private KakaoAPI kakaoAPI;
 	
 	public MemberController(MemberService memberService, KakaoAPI kakaoAPI) {
 		this.memberService = memberService;

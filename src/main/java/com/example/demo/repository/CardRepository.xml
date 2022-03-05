@@ -16,7 +16,7 @@
 			</if>
 			<if test="hashTagArr != null">
 				<foreach collection="hashTagArr" item="hashTag">
-					AND `tagStatus` LIKE CONCAT('%', #{hashTag}, '%')
+					AND CONCAT(',',`tagStatus`,',') LIKE CONCAT('%,',#{hashTag},',%')
 				</foreach>
 			</if>
 		</where>

@@ -102,7 +102,6 @@ $(document).ready(function(){
 	  function addTag (value) {
 	    tag[counter] = value; // 태그를 Object 안에 추가
 	    counter++; // 태그 생성 시 같이 생성되는 del-btn의 id
-	    console.log(tag);
 	  }
 	
 	  // 내부. tag 배열의 값들을 value 배열로 저장
@@ -174,7 +173,7 @@ $("#question > textarea").on("keyup", fn_checkByte);
 function fn_checkByte(){
     const maxByte = 100; //최대 100바이트
     const text_val = $("#question > textarea").val(); //입력한 문자
-    console.log(text_val);
+    
     const text_len = text_val.length; //입력한 문자수
     
     let totalByte=0;

@@ -43,7 +43,6 @@ public class CardController {
 		ResultData<ArrayList<Card>> listRd = cardService.getCardList(loginedMemberId, tagStatus, learningStatus, searchKeyword, curPage);
 		
 		md.addAttribute("listRd", listRd);
-		cardService.getAllHashTag(loginedMemberId);
 		md.addAttribute("allHashTag", cardService.getAllHashTag(loginedMemberId));
 		md.addAttribute("searchedLearn", learningStatus);
 		md.addAttribute("searchedTag", tagStatus);
