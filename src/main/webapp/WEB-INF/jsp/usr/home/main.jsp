@@ -54,9 +54,9 @@
     	<c:if test="${loginedMember != null}">
     	<!--  해시태그 목록   -->
     	<ul id="recent-tag-list" class="cell row">
-    	<c:if test="${allHashTag != null}">
+    	<c:if test="${recentHashTag != null}">
 	    	<!-- jstl fn을 활용해 태그 문자열 split -->
-	    	<c:forEach var="tagValue" items="${allHashTag}">
+	    	<c:forEach var="tagValue" items="${recentHashTag}">
 	    		<li class="tag-item cell">#${tagValue}</li>
 	    	</c:forEach>
     	</c:if>

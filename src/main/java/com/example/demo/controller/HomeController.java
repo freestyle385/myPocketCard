@@ -32,7 +32,7 @@ public class HomeController {
 			int allLearningCnt = needLearningCnt + complLearningCnt;
 			float complLearningRate = Math.round(((float)complLearningCnt/((float)needLearningCnt+(float)complLearningCnt)) * 100);
 			
-			md.addAttribute("allHashTag", cardService.getAllHashTag(loginedMemberId));
+			md.addAttribute("recentHashTag", cardService.getRecentHashTag(loginedMemberId));
 			md.addAttribute("needLearningCnt", needLearningCnt);
 			md.addAttribute("complLearningCnt", complLearningCnt);
 			md.addAttribute("allLearningCnt", allLearningCnt);
