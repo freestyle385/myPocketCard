@@ -1,5 +1,32 @@
-{"properties": [{
-  "name": "custom.redirect-uri",
-  "type": "java.lang.String",
-  "description": "A description for 'custom.redirect-uri'"
-}]}
+{"properties": [
+  {
+    "name": "custom.redirect-uri",
+    "type": "java.lang.String",
+    "description": "A description for 'custom.redirect-uri'"
+  },
+  {
+    "name": "custom.logDirectory",
+    "type": "java.lang.String",
+    "description": "A description for 'custom.logDirectory'"
+  },
+  {
+    "name": "log.config.path",
+    "type": "java.lang.String",
+    "description": "A description for 'log.config.path'"
+  },
+  {
+    "name": "log.config.filename",
+    "type": "java.lang.String",
+    "description": "A description for 'log.config.filename'"
+  },
+  {
+    "name": "custom.logging.dir",
+    "type": "java.lang.String",
+    "description": "A description for 'custom.logging.dir'"
+  },
+  {
+    "name": "custom.logging.level",
+    "type": "java.lang.String",
+    "description": "A description for 'custom.logging.level'"
+  }
+]}

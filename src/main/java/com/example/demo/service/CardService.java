@@ -118,9 +118,14 @@ public class CardService {
 			ArrayList<String> allHashTagList = new ArrayList<String>(allHashTag);
 			Collections.reverse(allHashTagList);
 			
-			// sublist로 앞 10개의 해시태그만 추출
-			ArrayList<String> recentHashTag = new ArrayList<String>(allHashTagList.subList(0, 10));
-			return recentHashTag;
+			if (allHashTagList.size() < 10) {
+				// 해시태그 개수가 10개 미만일 경우, allHashTagList를 내보냄
+				return allHashTagList;
+			} else {
+				// 해시태그 개수가 10개 이상일 경우, sublist로 앞 10개의 해시태그만 추출
+				ArrayList<String> recentHashTag = new ArrayList<String>(allHashTagList.subList(0, 10));
+				return recentHashTag;
+			}
 		}
 		
 		return null;

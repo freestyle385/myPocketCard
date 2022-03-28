@@ -41,7 +41,6 @@ public class MemberController {
 		// 2번 인증코드로 토큰 전달
 		HashMap<String, Object> userInfo = kakaoAPI.getUserInfo(accessToken);
 		
-		
 		String userEmail = (String) userInfo.get("email");
 		String userNickname = (String) userInfo.get("nickname");
 		
@@ -53,7 +52,7 @@ public class MemberController {
 			session.setAttribute("loginedMember", loginedMember);
 		}
 		
-		return Util.jsReplace("", String.format("/usr/home/main"));
+		return Util.jsReplace("", String.format("/"));
 	}
 	
 	@RequestMapping("/usr/member/doLogout")
