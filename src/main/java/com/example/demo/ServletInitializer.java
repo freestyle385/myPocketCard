@@ -7,6 +7,9 @@ public class ServletInitializer extends SpringBootServletInitializer {
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		//set register error pagefilter false
+        setRegisterErrorPageFilter(false);
+        
 		return application.sources(ToyProjectApplication.class);
 	}
 
