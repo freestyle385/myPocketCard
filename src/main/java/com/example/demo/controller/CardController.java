@@ -33,14 +33,13 @@ public class CardController {
 	public String getCardList(
 			String tagStatus, 
 			@RequestParam(defaultValue = "-1") int learningStatus, 
-			String searchKeyword, 
-			@RequestParam(defaultValue = "1") int curPage,
+			String searchKeyword,
 			Model md) {
 		
 		int loginedMemberId = ls.getLoginedMember().getId();
 		
 		//listRd info (결과 코드, 데이터 정보, 카드리스트, 전체카드의 수(Int))
-		ResultData<ArrayList<Card>> listRd = cardService.getCardList(loginedMemberId, tagStatus, learningStatus, searchKeyword, curPage);
+		ResultData<ArrayList<Card>> listRd = cardService.getCardList(loginedMemberId, tagStatus, learningStatus, searchKeyword);
 		
 		md.addAttribute("listRd", listRd);
 		md.addAttribute("allHashTag", cardService.getAllHashTag(loginedMemberId));

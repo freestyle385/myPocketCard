@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -27,22 +26,9 @@ public class CardService {
 	}
 
 	public ResultData<ArrayList<Card>> getCardList(int memberId, String tagStatus, int learningStatus,
-			String searchKeyword, int curPage) {
+			String searchKeyword) {
 
-		List<String> hashTagArr = new ArrayList<>();
-		if (!Util.emptyChk(tagStatus)) {
-			hashTagArr = Arrays.asList(tagStatus.split(","));
-		}
-
-		ArrayList<Card> allCardList = cardRepository.getCardList(memberId, hashTagArr, learningStatus, searchKeyword);
-		// int limitStart = (curPage - 1) * 4 > allCardList.size() ? allCardList.size()
-		// : (curPage - 1) * 4;
-		// int limitRange = limitStart + 4 > allCardList.size() ? allCardList.size() :
-		// limitStart + 4;
-
-		// 전체 게시물에서 subList를 통한 Limit
-		// ArrayList<Card> subCardList = new
-		// ArrayList<Card>(allCardList.subList(limitStart, limitRange));
+		ArrayList<Card> allCardList = cardRepository.getCardList(memberId, tagStatus, learningStatus, searchKeyword);
 
 		ResultData<ArrayList<Card>> listRd = new ResultData<>("S-1", "카드리스트, extraDataInfo:allCardListSize",
 				allCardList, allCardList.size() + "");

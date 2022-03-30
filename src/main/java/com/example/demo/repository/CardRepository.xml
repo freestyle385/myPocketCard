@@ -14,10 +14,10 @@
 			<if test="searchKeyword != null">
 				AND CONCAT(`title`, `body`) LIKE CONCAT('%', #{searchKeyword}, '%')
 			</if>
-			<if test="hashTagArr != null">
-				<foreach collection="hashTagArr" item="hashTag">
-					AND CONCAT(',',`tagStatus`,',') LIKE CONCAT('%,',#{hashTag},',%')
-				</foreach>
+			<if test="tagStatus != null">
+				<if test="tagStatus != ''">
+					AND CONCAT(',',`tagStatus`,',') LIKE CONCAT('%,',#{tagStatus},',%')
+				</if>
 			</if>
 		</where>
 		ORDER BY `id` DESC
