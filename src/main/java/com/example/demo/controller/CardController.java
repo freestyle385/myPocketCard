@@ -117,8 +117,12 @@ public class CardController {
 		}
 		ResultData<Integer> modifyRd = cardService.doModify(card, cardId);
 		
+		if(modifyRd.isFail()) {
+			return Util.jsHistoryBack(modifyRd.getMsg());
+		}
+		
 		//카드 수정 후 수정된 카드의 detail 페이지로 이동
-		return Util.jsReplace(modifyRd.getMsg(), String.format("/usr/card/detail?cardId=%d&memberId=%d", cardId, card.getWriterId())); 
+		return Util.jsReplace("", String.format("/usr/card/detail?cardId=%d&memberId=%d", cardId, card.getWriterId())); 
 	}
 	
 	@RequestMapping("/usr/card/showModify")

@@ -60,7 +60,7 @@ public class CardService {
 
 		Map<String, Integer> NextPrevCard = cardRepository.getNextPrev(cardId);
 
-		return new ResultData<Card>("S-1", cardId + "번 카드 입니다.", card, NextPrevCard);
+		return new ResultData<Card>("S-1", cardId + "번 카드 조회 완료", card, NextPrevCard);
 	}
 
 	public ResultData<Integer> doWriteCard(ForWriteCard card) {
@@ -85,7 +85,7 @@ public class CardService {
 			cardIdArr.add(Integer.parseInt(s));
 		}
 		cardRepository.setCardCondition(cardIdArr, memberId, learningStatus);
-		return new ResultData<String>("S-1", "변경성공");
+		return new ResultData<String>("S-1", "카드 상태 변경 완료");
 	}
 
 	public ResultData<Integer> doModify(ForWriteCard card, int cardId) {

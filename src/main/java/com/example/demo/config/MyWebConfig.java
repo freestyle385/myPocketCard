@@ -27,7 +27,7 @@ public class MyWebConfig implements WebMvcConfigurer{
 		
 		InterceptorRegistration needLoginIr = registry.addInterceptor(needLoginInterceptor);
 		needLoginIr.addPathPatterns("/usr/card/list**").addPathPatterns("/usr/card/**Write**")
-		.addPathPatterns("/usr/member/info**");
+		.addPathPatterns("/usr/member/info**").addPathPatterns("/usr/member/doDelete");
 		
 		InterceptorRegistration needLogoutIr = registry.addInterceptor(needLogoutInterceptor);
 		needLogoutIr.addPathPatterns("/usr/member/**Login**");
