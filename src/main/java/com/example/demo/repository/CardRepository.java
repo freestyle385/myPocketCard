@@ -33,5 +33,7 @@ public interface CardRepository {
 	int getNeedLearningCnt(@Param("memberId") int memberId);
 	
 	int getComplLearningCnt(@Param("memberId") int memberId);
+
+	int getWriterIdByCardId(@Param("cardId") int cardId);
 	
 }

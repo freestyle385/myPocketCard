@@ -16,13 +16,17 @@ import com.example.demo.dto.ResultData;
 import com.example.demo.repository.CardRepository;
 import com.example.demo.vo.Card;
 
+import com.example.demo.Util.LoginStatus;
+
 @Service
 public class CardService {
 
 	CardRepository cardRepository;
+	LoginStatus ls;
 
-	public CardService(CardRepository cardRepository) {
+	public CardService(CardRepository cardRepository, LoginStatus ls) {
 		this.cardRepository = cardRepository;
+		this.ls = ls;
 	}
 
 	public ResultData<ArrayList<Card>> getCardList(int memberId, String tagStatus, int learningStatus,
@@ -31,7 +35,7 @@ public class CardService {
 		ArrayList<Card> allCardList = cardRepository.getCardList(memberId, tagStatus, learningStatus, searchKeyword);
 
 		ResultData<ArrayList<Card>> listRd = new ResultData<>("S-1", "카드리스트, extraDataInfo:allCardListSize",
-				allCardList, allCardList.size() + "");
+				allCardList, allCardList.size());
 
 		return listRd;
 	}
@@ -44,6 +48,7 @@ public class CardService {
 			return new ResultData<Card>("F-1", "존재하지 않는 글 입니다.");
 		}
 
+		// 이전글, 다음글의 cardId를 조회해 Map에 추가
 		Map<String, Integer> NextPrevCard = cardRepository.getNextPrev(cardId);
 
 		return new ResultData<Card>("S-1", cardId + "번 카드 조회 완료", card, NextPrevCard);
@@ -65,8 +70,9 @@ public class CardService {
 	}
 
 	public ResultData<String> setCardCondition(String cardId, int memberId, Integer learningStatus) {
-		ArrayList<Integer> cardIdArr = new ArrayList<>();
 
+		// 문자열 상태의 cardId를 구분자 ','로 분할하여 배열에 추가
+		ArrayList<Integer> cardIdArr = new ArrayList<>();
 		for (String s : cardId.split(",")) {
 			cardIdArr.add(Integer.parseInt(s));
 		}
@@ -93,17 +99,17 @@ public class CardService {
 	}
 
 	public ArrayList<String> getRecentHashTag(int memberId) {
-		
+
 		String allHashTagStr = cardRepository.getAllHashTag(memberId);
 
 		if (!Util.emptyChk(allHashTagStr)) {
 			// LinkedHashSet에 해시태그 배열을 넣어 입력된 순서를 보장 및 중복 제거
 			LinkedHashSet<String> allHashTag = new LinkedHashSet<>(Arrays.asList(allHashTagStr.split(",")));
-			
+
 			// set을 ArrayList로 변환하여 인덱스 순서의 역순으로 데이터 정렬(최근 생성 순서)
 			ArrayList<String> allHashTagList = new ArrayList<String>(allHashTag);
 			Collections.reverse(allHashTagList);
-			
+
 			if (allHashTagList.size() < 10) {
 				// 해시태그 개수가 10개 미만일 경우, allHashTagList를 내보냄
 				return allHashTagList;
@@ -113,7 +119,7 @@ public class CardService {
 				return recentHashTag;
 			}
 		}
-		
+
 		return null;
 	}
 
@@ -139,5 +145,17 @@ public class CardService {
 		int complLearningCnt = cardRepository.getComplLearningCnt(memberId);
 
 		return complLearningCnt;
+	}
+
+	// 게시물 수정, 삭제 권한 체크(작성자 only)
+	public boolean memberAuthChk(int cardId) {
+
+		int result = cardRepository.getWriterIdByCardId(cardId);
+
+		if (ls.getLoginedMember().getId() == result) {
+			return true;
+		}
+
+		return false;
 	}
 }

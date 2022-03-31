@@ -4,7 +4,7 @@
 <mapper
 	namespace="com.example.demo.repository.CardRepository">
 	
-	<select id="getCardList" resultType="com.example.demo.vo.Card" parameterType="Map">
+	<select id="getCardList" resultType="com.example.demo.vo.Card">
 		SELECT * FROM `questionCard`
 		<where>
 			`writerId`=#{memberId}
@@ -99,5 +99,11 @@
 	
 	<select id="getComplLearningCnt" resultType="int">
 		SELECT COUNT(*) FROM `questionCard` WHERE `learningStatus` = 1;
+	</select>
+	
+	<select id="getWriterIdByCardId" parameterType="int" resultType="int">
+		SELECT writerId
+		FROM `questionCard`
+		WHERE id = #{cardId}
 	</select>
 </mapper>
